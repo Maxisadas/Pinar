@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/sistemainterno</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <property name="hibernate.connection.password">root</property>
+    <property name="hibernate.hbm2ddl.auto">validate</property>
+    <property name="hbm2ddl.auto">update</property>
+    <property name="hibernate.show_sql">true</property>
+    <mapping class="Modelo.Usuario"/>
+    <mapping class="Modelo.Especialidad"/>
+    <mapping class="Modelo.Rol"/>
+    <mapping class="Modelo.Area"/>
+    <mapping class="Modelo.Personal"/>
+    <mapping class="Modelo.DetalleInforme"/>
+    <mapping class="Modelo.Informe"/>
+    <mapping class="Modelo.Paciente"/>
+    <mapping class="Modelo.ObraSocial"/>
+    <mapping class="Modelo.HistorialClinico"/>
+    <mapping class="Modelo.HistorialClinicoEstado"/>
+    <mapping class="Modelo.EstadoHistorialClinico"/>
+    <mapping class="Modelo.TipoPrioridad"/>
+    <mapping class="Modelo.EstadoConsulta"/>
+    <mapping class="Modelo.TipoConsulta"/>
+    <mapping class="Modelo.Consulta"/>
+    <mapping class="Modelo.EstadoDetalleConsulta"/>
+    <mapping class="Modelo.DetalleConsulta"/>
+    <mapping class="Modelo.DetalleConsultaEstado"/>
+  </session-factory>
+</hibernate-configuration>
