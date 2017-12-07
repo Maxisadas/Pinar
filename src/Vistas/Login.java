@@ -7,7 +7,9 @@ package Vistas;
 
 
 import Controlador.ControladorIniciarSesion.ControladorIniciarSesion;
+import Modelo.Usuario;
 import Vistas.PantallaPrincipal.InterfazPantallaPrincipal;
+import Vistas.PantallaPrincipalEnfermeria.PantallaPrincipalEnfermeria;
 import Vistas.RegistrarUsuario.InterfazRegistrarUsuario;
 import javax.swing.JOptionPane;
 
@@ -120,11 +122,23 @@ ControladorIniciarSesion controlador;
 
     private void botonIngresarSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresarSistemaActionPerformed
         if(controlador.validarUsuario(textNombreUsuario.getText(), textContraseña.getText())){
-            
-            InterfazPantallaPrincipal i = new InterfazPantallaPrincipal(controlador.loguear(textNombreUsuario.getText()));
+            Usuario usuario = controlador.loguear(textNombreUsuario.getText());
+            if(usuario.getPersonal().getArea().getNombreArea() == "Enfermeria"){
+                
+            PantallaPrincipalEnfermeria i = new PantallaPrincipalEnfermeria(usuario);
             i.setVisible(true);
             this.setVisible(false);
             this.dispose();
+                
+            }else{
+            InterfazPantallaPrincipal i = new InterfazPantallaPrincipal(usuario);
+            i.setVisible(true);
+            this.setVisible(false);
+            this.dispose();    
+                
+            }
+            
+
             
         }else{
             
