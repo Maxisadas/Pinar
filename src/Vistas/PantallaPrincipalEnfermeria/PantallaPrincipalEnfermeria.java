@@ -35,7 +35,7 @@ Personal personal;
         controlador = new ControladorConsultarSugerencia();
         this.setLocationRelativeTo(null);
         this.setExtendedState(MAXIMIZED_BOTH);
-        textodeBienvenida.setText("Bienvenido " + usuario.getPersonal().getNombre() + " " + usuario.getPersonal().getApellido() + " Al area " + usuario.getPersonal().getArea().getNombreArea());
+        textodeBienvenida2.setText("Bienvenido " + usuario.getPersonal().getNombre() + " " + usuario.getPersonal().getApellido() + " Al area " + usuario.getPersonal().getArea().getNombreArea());
         start();
     }
     
@@ -53,15 +53,15 @@ Personal personal;
     
         public void refrescar(){
          System.gc();
-        jPanel5.removeAll();
+        //jPanel5.removeAll();
             int y = 0;
         List<DTOConsulta> listdto = controlador.verificarSugerencias(personal);
         for(DTOConsulta dto :listdto){
             Sugerencia sugerencia = new Sugerencia(dto,controlador);
             sugerencia.setVisible(true);
             sugerencia.setBounds(0, y, 285, 105);
-            jPanel5.add(sugerencia);
-            jPanel5.validate();
+            //jPanel5.add(sugerencia);
+            //jPanel5.validate();
             y = y + 106;
            
             
@@ -259,43 +259,19 @@ Personal personal;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonRealizarInterconsulta;
-    private javax.swing.JButton botonRealizarInterconsulta1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JLabel textodeBienvenida;
-    private javax.swing.JLabel textodeBienvenida1;
     private javax.swing.JLabel textodeBienvenida2;
     // End of variables declaration//GEN-END:variables
 }

@@ -87,7 +87,7 @@ public class EnviarAviso extends javax.swing.JDialog {
 
         NombrePaciente.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         NombrePaciente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        NombrePaciente.setText("jLabel8");
+        NombrePaciente.setText("Nombre paciente");
 
         jLabel2.setText("Escriba su mensaje:");
 

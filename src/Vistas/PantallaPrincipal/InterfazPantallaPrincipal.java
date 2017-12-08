@@ -54,6 +54,19 @@ Personal personal;
         this.setExtendedState(MAXIMIZED_BOTH);
         textodeBienvenida.setText("Bienvenido " + usuario.getPersonal().getNombre() + " " + usuario.getPersonal().getApellido() + " Al area " + usuario.getPersonal().getArea().getNombreArea());
         start();
+        if(usuario.getPersonal().getRol().getNombreRol() == "Administrador Aplicacion"){
+            jMenu2.setVisible(true);
+            jMenu3.setVisible(true);
+        }else{
+            if(usuario.getPersonal().getRol().getNombreRol() == "Director"){
+                jMenu2.setVisible(false);
+                jMenu3.setVisible(true);
+            }else{
+                jMenu2.setVisible(false);
+                jMenu3.setVisible(false);
+            }
+        }
+        
     }
     
     public void start(){
@@ -199,7 +212,7 @@ Personal personal;
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGap(11, 11, 11)
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(114, 114, 114)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -280,7 +293,7 @@ Personal personal;
         jMenuItem5.setText("ABM EstadoConsulta");
         jMenu2.add(jMenuItem5);
 
-        jMenuItem6.setText("jMenuItem6");
+        jMenuItem6.setText("ABM HistorialEstado");
         jMenu2.add(jMenuItem6);
 
         jMenuBar1.add(jMenu2);
