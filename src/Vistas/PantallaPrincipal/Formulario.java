@@ -253,8 +253,8 @@ public class Formulario extends javax.swing.JDialog {
         String areaSeleccionada=(String)jComboBox1.getSelectedItem();
         String informeAvanzado=jTextArea1.getText()!=null?jTextArea1.getText():"";
         String informeBasico=jTextArea2.getText()!=null?jTextArea2.getText():"";
-        String foto=TextRutaImagen.getText();
-        String foto1=TextRutaImagen1.getText();
+        String foto=TextRutaImagen.getText()!=null?TextRutaImagen.getText():" ";
+        String foto1=TextRutaImagen1.getText()!=null?TextRutaImagen1.getText():" ";
         boolean resultado=controladorForm.guardarFormulario(areaSeleccionada, informeBasico, informeAvanzado,foto,foto1, id);
         if(resultado){
             JOptionPane.showMessageDialog(rootPane, "Se ha guardado el formulario exitosamente");
