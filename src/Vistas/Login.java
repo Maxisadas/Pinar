@@ -123,7 +123,7 @@ ControladorIniciarSesion controlador;
     private void botonIngresarSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresarSistemaActionPerformed
         if(controlador.validarUsuario(textNombreUsuario.getText(), textContraseña.getText())){
             Usuario usuario = controlador.loguear(textNombreUsuario.getText());
-            if(usuario.getPersonal().getArea().getNombreArea() == "Enfermeria"){
+            if("Enfermeria".equals(usuario.getPersonal().getArea().getNombreArea())){
                 
             PantallaPrincipalEnfermeria i = new PantallaPrincipalEnfermeria(usuario);
             i.setVisible(true);

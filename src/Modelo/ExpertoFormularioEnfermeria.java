@@ -18,10 +18,10 @@ public class ExpertoFormularioEnfermeria {
     
     public DTOFormulario buscar(Long idabuelo,Long idPersonal){
         Personal personal = (Personal) HibernateUtil.getSession().createQuery("SELECT p FROM Personal p WHERE p.id=" + idPersonal).uniqueResult();
-        Paciente paciente = (Paciente) HibernateUtil.getSession().createQuery("SELECT p FROM Paciente p WHERE p.id=" + idPersonal).uniqueResult();
+        Paciente paciente = (Paciente) HibernateUtil.getSession().createQuery("SELECT p FROM Paciente p WHERE p.id=" + idabuelo).uniqueResult();
         DTOFormulario dto = new DTOFormulario();
         dto.setNombreArea(personal.getArea().getNombreArea());
-        dto.setNombreApellidoPaciente(paciente.getNombre() + " " + paciente.getApellido() );
+        dto.setNombreApellidoPaciente(paciente.getNombre() + " " + paciente.getApellido());
         return dto;
     }
     
@@ -35,9 +35,11 @@ public class ExpertoFormularioEnfermeria {
             informe.setPersonal(personal);
             DetalleInforme informeB= new DetalleInforme();
             informeB.setInformeMedico(dto.getInformetext());
+            informeB.setFotoPaciente(new byte[]{1});
             informeB.setInforme(informe);
             DetalleInforme informeAv= new DetalleInforme();
             informeAv.setInforme(informe);
+            informeAv.setFotoPaciente(new byte[]{1});
             informeAv.setInformeMedico(dto.getInformetext());
             FachadaInterna.getInstancia().guardar(informeB);
             FachadaInterna.getInstancia().guardar(informeAv);

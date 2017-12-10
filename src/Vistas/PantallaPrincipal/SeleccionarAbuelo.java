@@ -215,7 +215,11 @@ public class SeleccionarAbuelo extends javax.swing.JDialog {
             //Importante para poder ir a la otra ventana.
             id=dto.getId();
             //Parte Grafica
+            if(dto.getDTOobraSocial() != null){
             textObraSocial.setText(dto.getDTOobraSocial().getNombreObraSocial());
+            }else{
+                textObraSocial.setText("No tiene");
+            }
             textPeso.setText(dto.getPeso().toString()+" kg");
             textTalla.setText(dto.getTalla().toString());
             jLabel10.setText(dto.getDni());
