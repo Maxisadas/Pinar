@@ -33,6 +33,8 @@ DTOFormulario dto;
         this.setLocationRelativeTo(null);
         controlador = new ControladorFormularioEnfermeria();
         dto = controlador.buscar(idabuelo, usuario.getPersonal().getId());
+        dto.setIdAbuelo(idabuelo);
+        dto.setIdPersonal(usuario.getPersonal().getId());
         txtArea.setText(dto.getNombreArea());
         txtPacienteSeleccionado.setText(dto.getNombreApellidoPaciente());
         
