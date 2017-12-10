@@ -5,6 +5,7 @@
  */
 package Vistas.PantallaPrincipalEnfermeria;
 
+import Controlador.ControladorAbuelo.ControladorAbuelo;
 import Controlador.ControladorConsultarSugerencia.ControladorConsultarSugerencia;
 import Controlador.DTO.DTOConsulta;
 import static Modelo.Consulta_.personal;
@@ -12,6 +13,7 @@ import Modelo.Personal;
 import Modelo.Usuario;
 import Vistas.Login;
 import Vistas.PantallaPrincipal.Background;
+import Vistas.PantallaPrincipal.SeleccionarAbuelo;
 import Vistas.PantallaPrincipal.Sugerencia;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,12 +27,14 @@ import javax.swing.Timer;
 public class PantallaPrincipalEnfermeria extends javax.swing.JFrame {
 ControladorConsultarSugerencia controlador;
 Personal personal;
+Usuario usuario;
     /**
      * Creates new form PantallaPrincipalEnfermeria
      * @param usuario
      */
     public PantallaPrincipalEnfermeria(Usuario usuario) {
         initComponents();
+        this.usuario = usuario;
         personal = usuario.getPersonal();
         controlador = new ControladorConsultarSugerencia();
         this.setLocationRelativeTo(null);
@@ -214,7 +218,9 @@ Personal personal;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-
+   
+        SeleccionarAbuelo i = new SeleccionarAbuelo(this,true,usuario);
+        i.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed

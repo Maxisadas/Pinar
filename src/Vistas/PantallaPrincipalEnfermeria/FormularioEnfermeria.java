@@ -5,20 +5,36 @@
  */
 package Vistas.PantallaPrincipalEnfermeria;
 
+import Controlador.ControladorGuardarFormularioEnfermeria.ControladorFormularioEnfermeria;
+import Controlador.DTO.DTOFormulario;
+import Modelo.Usuario;
 import Vistas.PantallaPrincipal.Background;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Maxi
  */
 public class FormularioEnfermeria extends javax.swing.JDialog {
-
+ControladorFormularioEnfermeria controlador;
+Usuario usuario;
+DTOFormulario dto;
     /**
      * Creates new form FormularioEnfermeria
+     * @param parent
+     * @param modal
+     * @param usuario
+     * @param idabuelo
      */
-    public FormularioEnfermeria(java.awt.Frame parent, boolean modal) {
+    public FormularioEnfermeria(java.awt.Frame parent, boolean modal,Long idabuelo,Usuario usuario) {
         super(parent, modal);
+        this.usuario = usuario;
         initComponents();
+        controlador = new ControladorFormularioEnfermeria();
+        dto = controlador.buscar(idabuelo, usuario.getPersonal().getId());
+        txtArea.setText(dto.getNombreArea());
+        txtPacienteSeleccionado.setText(dto.getNombreApellidoPaciente());
+        
     }
 
     /**
@@ -156,7 +172,14 @@ public class FormularioEnfermeria extends javax.swing.JDialog {
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
         
         String informeAvanzado=jTextArea1.getText()!=null?jTextArea1.getText():"";
-        
+        dto.setInformetext(informeAvanzado);
+        if(controlador.guardar(dto)){
+            JOptionPane.showMessageDialog(null, "Se guardo el informe con exito", "Exito", 1);
+            this.dispose();
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "Hubo un incoveniente, contacte con el administrador", "Error", 0);
+        }
         
     }//GEN-LAST:event_botonGuardarActionPerformed
 
@@ -190,14 +213,7 @@ public class FormularioEnfermeria extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                FormularioEnfermeria dialog = new FormularioEnfermeria(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
+
             }
         });
     }
