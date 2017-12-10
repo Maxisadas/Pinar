@@ -35,11 +35,9 @@ public class ExpertoFormularioEnfermeria {
             informe.setPersonal(personal);
             DetalleInforme informeB= new DetalleInforme();
             informeB.setInformeMedico(dto.getInformetext());
-            informeB.setFotoPaciente(new byte[]{1});
             informeB.setInforme(informe);
             DetalleInforme informeAv= new DetalleInforme();
             informeAv.setInforme(informe);
-            informeAv.setFotoPaciente(new byte[]{1});
             informeAv.setInformeMedico(dto.getInformetext());
             FachadaInterna.getInstancia().guardar(informeB);
             FachadaInterna.getInstancia().guardar(informeAv);

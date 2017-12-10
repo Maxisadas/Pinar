@@ -30,6 +30,7 @@ DTOFormulario dto;
         super(parent, modal);
         this.usuario = usuario;
         initComponents();
+        this.setLocationRelativeTo(null);
         controlador = new ControladorFormularioEnfermeria();
         dto = controlador.buscar(idabuelo, usuario.getPersonal().getId());
         txtArea.setText(dto.getNombreArea());

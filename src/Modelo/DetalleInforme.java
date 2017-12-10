@@ -31,7 +31,7 @@ public class DetalleInforme implements Serializable{
     @OneToOne(fetch = FetchType.LAZY)
     private Informe informe;
     @Lob
-    @Column(name="foto",nullable=false)
+    @Column(name="foto",nullable=true)
     private byte[] fotoPaciente;
     public DetalleInforme() {
     }
