@@ -13,7 +13,9 @@ import Modelo.Personal;
 import Modelo.Rol;
 import Modelo.Usuario;
 import Vistas.ABMAbuelo.PantallaPrincipalABMAbuelos;
+import Vistas.ABMArea.PantallaPrincipalABMArea;
 import Vistas.ABMEspecializacion.PantallaPrincipalABMEspecializacion;
+import Vistas.ABMPersonal.PantallaPrincipalABMPersonal;
 import Vistas.ABMRol.PantallaPrincipalABMRol;
 import Vistas.Interconsultas.Interconsulta;
 import Vistas.Login;
@@ -54,6 +56,19 @@ Personal personal;
         this.setExtendedState(MAXIMIZED_BOTH);
         textodeBienvenida.setText("Bienvenido " + usuario.getPersonal().getNombre() + " " + usuario.getPersonal().getApellido() + " Al area " + usuario.getPersonal().getArea().getNombreArea());
         start();
+        if("Administrador Aplicacion".equals(usuario.getPersonal().getRol().getNombreRol())){
+            jMenu2.setVisible(true);
+            jMenu3.setVisible(true);
+        }else{
+            if("Director".equals(usuario.getPersonal().getRol().getNombreRol())){
+                jMenu2.setVisible(false);
+                jMenu3.setVisible(true);
+            }else{
+                jMenu2.setVisible(false);
+                jMenu3.setVisible(false);
+            }
+        }
+        
     }
     
     public void start(){
@@ -121,6 +136,7 @@ Personal personal;
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
 
@@ -199,7 +215,7 @@ Personal personal;
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGap(11, 11, 11)
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(114, 114, 114)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -275,13 +291,26 @@ Personal personal;
         jMenu2.add(jMenuItem3);
 
         jMenuItem4.setText("ABM Areas");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem4);
 
         jMenuItem5.setText("ABM EstadoConsulta");
         jMenu2.add(jMenuItem5);
 
-        jMenuItem6.setText("jMenuItem6");
+        jMenuItem6.setText("ABM HistorialEstado");
         jMenu2.add(jMenuItem6);
+
+        jMenuItem8.setText("ABM Personal");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem8);
 
         jMenuBar1.add(jMenu2);
 
@@ -346,9 +375,19 @@ Personal personal;
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        EnviarAviso i = new EnviarAviso(null,true);
+        EnviarAviso i = new EnviarAviso(this,true);
         i.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+       PantallaPrincipalABMArea i = new PantallaPrincipalABMArea(this,true);
+       i.setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        PantallaPrincipalABMPersonal i = new PantallaPrincipalABMPersonal(this,true);
+        i.setVisible(true);
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -426,6 +465,7 @@ Personal personal;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane2;

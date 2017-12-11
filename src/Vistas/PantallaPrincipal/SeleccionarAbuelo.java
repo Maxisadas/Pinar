@@ -7,6 +7,8 @@ package Vistas.PantallaPrincipal;
 
 import Controlador.ControladorAbuelo.ControladorAbuelo;
 import Controlador.DTO.DTOAbuelo;
+import Modelo.Usuario;
+import Vistas.PantallaPrincipalEnfermeria.FormularioEnfermeria;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -22,14 +24,27 @@ import javax.swing.JOptionPane;
 public class SeleccionarAbuelo extends javax.swing.JDialog {
     ControladorAbuelo controlador;
     private Long id;
+    boolean formulario;
+    private Usuario usuario;
     /**
      * Creates new form SeleccionarAbuelo
      */
     public SeleccionarAbuelo(java.awt.Frame parent, boolean modal,ControladorAbuelo controlador) {
         super(parent, modal);
+        this.formulario = true; //SI ES TRUE ENTRA AL FORMULARIO DE LOS MEDICOS
         initComponents();
         this.setLocationRelativeTo(null);
         this.controlador=controlador;
+        jPanel1.setVisible(false);
+    }
+    
+        public SeleccionarAbuelo(java.awt.Frame parent, boolean modal,Usuario usuario) {
+        super(parent, modal);
+        this.formulario = false; //SI ES FALSE ENTRA AL FORMULARIO DE ENFERMERIA
+        this.usuario = usuario;
+        initComponents();
+        this.setLocationRelativeTo(null);
+        this.controlador= new ControladorAbuelo();
         jPanel1.setVisible(false);
     }
 
@@ -200,7 +215,11 @@ public class SeleccionarAbuelo extends javax.swing.JDialog {
             //Importante para poder ir a la otra ventana.
             id=dto.getId();
             //Parte Grafica
+            if(dto.getDTOobraSocial() != null){
             textObraSocial.setText(dto.getDTOobraSocial().getNombreObraSocial());
+            }else{
+                textObraSocial.setText("No tiene");
+            }
             textPeso.setText(dto.getPeso().toString()+" kg");
             textTalla.setText(dto.getTalla().toString());
             jLabel10.setText(dto.getDni());
@@ -227,9 +246,15 @@ public class SeleccionarAbuelo extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if(formulario){
         Formulario i = new Formulario(null,true,id);
         i.setVisible(true);
-        this.dispose();
+        this.dispose();   
+        }else{
+         FormularioEnfermeria i = new FormularioEnfermeria(null,true,id,usuario);   
+         i.setVisible(true);
+        }
+
         
     }//GEN-LAST:event_jButton3ActionPerformed
 

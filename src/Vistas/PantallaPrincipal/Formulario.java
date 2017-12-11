@@ -6,6 +6,7 @@
 package Vistas.PantallaPrincipal;
 
 import Controlador.ControladorABMArea.ControladorABMArea;
+import Controlador.ControladorAbuelo.ControladorAbuelo;
 import Controlador.ControladorGuardarFormulario.ControladorGestionFormulario;
 import Controlador.DTO.DTOArea;
 import java.awt.Image;
@@ -268,7 +269,8 @@ public class Formulario extends javax.swing.JDialog {
         boolean resultado=controladorForm.guardarFormulario(areaSeleccionada, informeBasico, informeAvanzado,foto,foto1, id);
         if(resultado){
             JOptionPane.showMessageDialog(rootPane, "Se ha guardado el formulario exitosamente");
-            SeleccionarAbuelo i= new SeleccionarAbuelo(null, resultado, null);
+            ControladorAbuelo controlador = new ControladorAbuelo();
+            SeleccionarAbuelo i= new SeleccionarAbuelo(null, resultado, controlador);
             i.setVisible(true);
             this.setVisible(false);
             this.dispose();

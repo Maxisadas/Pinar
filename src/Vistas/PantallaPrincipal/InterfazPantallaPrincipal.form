@@ -44,6 +44,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="ABM Areas"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem4ActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
               <Properties>
@@ -52,8 +55,16 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jMenuItem6"/>
+                <Property name="text" type="java.lang.String" value="ABM HistorialEstado"/>
               </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem8">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="ABM Personal"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem8ActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -141,7 +152,7 @@
                                   <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                                   <Component id="jButton1" min="-2" pref="308" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jButton3" alignment="0" min="-2" pref="320" max="-2" attributes="0"/>
+                              <Component id="jButton3" alignment="1" min="-2" pref="320" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
