@@ -95,6 +95,11 @@ public class Formulario extends javax.swing.JDialog {
         });
 
         botonImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/imagenes/imprimir.jpg"))); // NOI18N
+        botonImprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonImprimirActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -125,6 +130,11 @@ public class Formulario extends javax.swing.JDialog {
         });
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/imagenes/imprimir.jpg"))); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel4.setText("Al realizar el informe avanzado, este informe sera almacenado en un historial clinico del sistema interno donde solo los directivos y medicos puede ser consultados.");
@@ -304,6 +314,17 @@ public class Formulario extends javax.swing.JDialog {
             //botonApretado = true;       
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void botonImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonImprimirActionPerformed
+        RutaPdf imprimir=new RutaPdf(null,true,jTextArea1.getText());
+        imprimir.setVisible(true);
+        
+    }//GEN-LAST:event_botonImprimirActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        RutaPdf imprimir=new RutaPdf(null,true,jTextArea2.getText());
+        imprimir.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
