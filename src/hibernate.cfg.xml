@@ -13,6 +13,7 @@
     <property name="hibernate.show_sql">true</property>
     <mapping class="Modelo.Usuario"/>
     <mapping class="Modelo.Especialidad"/>
+    <mapping class="Modelo.TipoInforme"/>
     <mapping class="Modelo.Rol"/>
     <mapping class="Modelo.Area"/>
     <mapping class="Modelo.Personal"/>

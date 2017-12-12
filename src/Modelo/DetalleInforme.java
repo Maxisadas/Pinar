@@ -13,6 +13,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -33,6 +34,9 @@ public class DetalleInforme implements Serializable{
     @Lob
     @Column(name="foto",nullable=true)
     private byte[] fotoPaciente;
+    @ManyToOne
+    private TipoInforme tipoInforme;
+    
     public DetalleInforme() {
     }
 
@@ -66,6 +70,14 @@ public class DetalleInforme implements Serializable{
 
     public void setFotoPaciente(byte[] fotoPaciente) {
         this.fotoPaciente = fotoPaciente;
+    }
+
+    public void setTipoInforme(TipoInforme tipoInforme) {
+        this.tipoInforme = tipoInforme;
+    }
+
+    public TipoInforme getTipoInforme() {
+        return tipoInforme;
     }
     
     
