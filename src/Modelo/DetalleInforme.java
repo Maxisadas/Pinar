@@ -25,6 +25,7 @@ import javax.persistence.Table;
 @Table(name="detalleInforme")
 public class DetalleInforme implements Serializable{
     
+    public enum TipoInforme {BASICO,AVANZADO};
     @Id @GeneratedValue
     private Long id;
     @Column(name="informeMedico")
@@ -34,7 +35,7 @@ public class DetalleInforme implements Serializable{
     @Lob
     @Column(name="foto",nullable=true)
     private byte[] fotoPaciente;
-    @ManyToOne
+    @Column
     private TipoInforme tipoInforme;
     
     public DetalleInforme() {
@@ -79,7 +80,5 @@ public class DetalleInforme implements Serializable{
     public TipoInforme getTipoInforme() {
         return tipoInforme;
     }
-    
-    
     
 }
