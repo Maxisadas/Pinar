@@ -7,7 +7,13 @@ package Modelo;
 
 import Controlador.Persistencia.FachadaInterna;
 import Controlador.Persistencia.HibernateUtil;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.pdfa.PdfADocument;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Date;
 import org.apache.commons.io.IOUtils;
 
@@ -27,11 +33,11 @@ public class ExpertoGestionFormulario {
             DetalleInforme informeB= new DetalleInforme();
             informeB.setInformeMedico(informeBasico);
             informeB.setInforme(informe);
-            informeB.setFotoPaciente(convertirStringAbyte(foto));
+            informeB.setFotoPaciente(convertirStringAbyte(foto!=null?foto:"  "));
             DetalleInforme informeAv= new DetalleInforme();
             informeAv.setInforme(informe);
             informeAv.setInformeMedico(informeAvanzado);
-            informeAv.setFotoPaciente(convertirStringAbyte(foto1));
+            informeAv.setFotoPaciente(convertirStringAbyte(foto1!=null?foto:"  "));
             FachadaInterna.getInstancia().guardar(informeB);
             FachadaInterna.getInstancia().guardar(informeAv);
             FachadaInterna.getInstancia().guardar(informe);
