@@ -60,7 +60,7 @@ Personal personal;
             jMenu2.setVisible(true);
             jMenu3.setVisible(true);
         }else{
-            if("Director".equals(usuario.getPersonal().getRol().getNombreRol())){
+            if("Director Medico".equals(usuario.getPersonal().getRol().getNombreRol())){
                 jMenu2.setVisible(false);
                 jMenu3.setVisible(true);
             }else{
@@ -188,6 +188,11 @@ Personal personal;
         });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/imagenes/historialclinico.jpg"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/imagenes/enfermeria.jpg"))); // NOI18N
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -388,6 +393,11 @@ Personal personal;
         PantallaPrincipalABMPersonal i = new PantallaPrincipalABMPersonal(this,true);
         i.setVisible(true);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Informes i = new Informes(this,true);
+        i.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

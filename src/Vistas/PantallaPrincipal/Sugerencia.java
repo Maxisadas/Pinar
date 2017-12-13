@@ -7,6 +7,8 @@ package Vistas.PantallaPrincipal;
 
 import Controlador.ControladorConsultarSugerencia.ControladorConsultarSugerencia;
 import Controlador.DTO.DTOConsulta;
+import java.awt.Color;
+import java.awt.Font;
 import java.text.SimpleDateFormat;
 
 /**
@@ -27,7 +29,39 @@ ControladorConsultarSugerencia controlador;
         fecha.setText(formateador.format(dto.getFechaCreacion()));
         nombreArea.setText(dto.getNombreArea());
         nombreMedico.setText(dto.getNombreProfesional());
-        nombrePrioridad.setText(dto.getPrioridad());
+        if(Integer.parseInt(dto.getPrioridad()) == 1){
+          Font fuente = new Font("Tahoma",Font.BOLD,14);
+          Color color = new Color(255,0,0);
+          jLabel9.setFont(fuente);
+          jLabel9.setForeground(color);
+          nombrePrioridad.setText(dto.getPrioridad());
+          nombrePrioridad.setFont(fuente);
+          nombrePrioridad.setForeground(color);
+        }else{
+          if(Integer.parseInt(dto.getPrioridad()) == 2 || Integer.parseInt(dto.getPrioridad()) == 3 ){
+          Font fuente = new Font("Tahoma",Font.BOLD,14);
+          
+          Color color = new Color(255,102,51);
+          jLabel9.setFont(fuente);
+          jLabel9.setForeground(color);
+          nombrePrioridad.setText(dto.getPrioridad());
+          nombrePrioridad.setFont(fuente);
+          nombrePrioridad.setForeground(color);
+              
+              
+          }else{
+          Font fuente = new Font("Tahoma",Font.PLAIN,12);
+          Color color = new Color(0,255,0);
+          jLabel9.setFont(fuente);
+          jLabel9.setForeground(color);
+          nombrePrioridad.setText(dto.getPrioridad());
+          nombrePrioridad.setFont(fuente);
+          nombrePrioridad.setForeground(color);
+              
+          }  
+            
+        }
+        
     }
 
     /**
@@ -120,7 +154,7 @@ ControladorConsultarSugerencia controlador;
                     .addComponent(jLabel13))
                 .addGroup(SugerenciaNuevaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(SugerenciaNuevaLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(SugerenciaNuevaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
                             .addComponent(nombrePrioridad)))
