@@ -26,13 +26,15 @@ public class SeleccionarAbuelo extends javax.swing.JDialog {
     private Long id;
     boolean formulario;
     private Usuario usuario;
+    private Long idPersonal;
     /**
      * Creates new form SeleccionarAbuelo
      */
-    public SeleccionarAbuelo(java.awt.Frame parent, boolean modal,ControladorAbuelo controlador) {
+    public SeleccionarAbuelo(java.awt.Frame parent, boolean modal,ControladorAbuelo controlador,Long idPersonal) {
         super(parent, modal);
         this.formulario = true; //SI ES TRUE ENTRA AL FORMULARIO DE LOS MEDICOS
         initComponents();
+        this.idPersonal=idPersonal;
         this.setLocationRelativeTo(null);
         this.controlador=controlador;
         jPanel1.setVisible(false);
@@ -247,7 +249,7 @@ public class SeleccionarAbuelo extends javax.swing.JDialog {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         if(formulario){
-        Formulario i = new Formulario(null,true,id);
+        Formulario i = new Formulario(null,true,id,idPersonal);
         i.setVisible(true);
         this.dispose();   
         }else{

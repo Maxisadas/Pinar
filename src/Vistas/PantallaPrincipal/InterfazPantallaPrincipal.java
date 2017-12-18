@@ -359,7 +359,7 @@ Personal personal;
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         ControladorAbuelo controlador=new ControladorAbuelo();
-        SeleccionarAbuelo i = new SeleccionarAbuelo(this,true,controlador);
+        SeleccionarAbuelo i = new SeleccionarAbuelo(this,true,controlador,personal.getId());
         i.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
