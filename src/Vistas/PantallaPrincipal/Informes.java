@@ -5,6 +5,9 @@
  */
 package Vistas.PantallaPrincipal;
 
+import Modelo.DetalleInforme;
+import Modelo.DetalleInforme.TipoInforme;
+
 /**
  *
  * @author Maxi
@@ -40,8 +43,18 @@ public class Informes extends javax.swing.JDialog {
         jLabel1.setText("Seleccione que tipo de historial desea consultar.");
 
         jButton1.setText("Basico");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Avanzado");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Volver");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -90,6 +103,16 @@ public class Informes extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        SeleccionarPaciente i=new SeleccionarPaciente(null, true,TipoInforme.BASICO);
+        i.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        SeleccionarPaciente i=new SeleccionarPaciente(null, true,TipoInforme.AVANZADO);
+        i.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -120,14 +143,7 @@ public class Informes extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Informes dialog = new Informes(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
+               
             }
         });
     }
