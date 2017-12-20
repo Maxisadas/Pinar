@@ -33,7 +33,9 @@ public class Informe implements Serializable {
     private Paciente paciente;
     @ManyToOne
     private Personal personal;
-
+    @ManyToOne
+    private HistorialClinico historialClinico;
+    
     public Informe() {
     }
 
@@ -76,7 +78,13 @@ public class Informe implements Serializable {
     public void setPersonal(Personal personal) {
         this.personal = personal;
     }
-    
-    
-    
+
+    public HistorialClinico getHistorialClinico() {
+        return historialClinico;
+    }
+
+    public void setHistorialClinico(HistorialClinico historialClinico) {
+        this.historialClinico = historialClinico;
+    }
+
 }

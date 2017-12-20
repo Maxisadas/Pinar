@@ -6,6 +6,7 @@
 package Vistas.PantallaPrincipal;
 
 import Controlador.ControladorABMArea.ControladorABMArea;
+import Controlador.ControladorABMPersonal.ControladorABMPersonal;
 import Controlador.ControladorAbuelo.ControladorAbuelo;
 import Controlador.ControladorGuardarFormulario.ControladorGestionFormulario;
 import Controlador.DTO.DTOArea;
@@ -25,27 +26,21 @@ public class Formulario extends javax.swing.JDialog {
 
     ControladorABMArea controlador;
     ControladorGestionFormulario controladorForm;
+    ControladorABMPersonal controladorPersonal; 
     private Long id;
+    private Long idPersonal;
     /**
      * Creates new form Formulario
      */
-    public Formulario(java.awt.Frame parent, boolean modal, Long id) {
+    public Formulario(java.awt.Frame parent, boolean modal, Long id,Long idPersonal) {
         super(parent, modal);
         this.id=id;
         controlador= new ControladorABMArea();
         controladorForm=new ControladorGestionFormulario();
+        controladorPersonal=new ControladorABMPersonal();
         initComponents();
+        textArea.setText(controladorPersonal.buscar(idPersonal).getNombreArea());
         this.setLocationRelativeTo(null);
-        initSelect();
-    }
-
-    public void initSelect(){
-        List<DTOArea> lista = controlador.buscar();
-        for(DTOArea o : lista){
-            jComboBox1.addItem(o.getNombreArea());
-        }
-        
-        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -74,9 +69,9 @@ public class Formulario extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
         TextRutaImagen = new javax.swing.JTextField();
         TextRutaImagen1 = new javax.swing.JTextField();
+        textArea = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -115,6 +110,11 @@ public class Formulario extends javax.swing.JDialog {
         jLabel3.setText("Realizar informe basico: (Tenga en cuenta que el informe basico, va dirigdo a las familias)");
 
         jbotonVolver.setText("Volver al menu principal");
+        jbotonVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbotonVolverActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Subir foto");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -146,11 +146,8 @@ public class Formulario extends javax.swing.JDialog {
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel7.setText("Se recomienda en el informe basico solo ingresar datos simples y entendibles para las familias.");
 
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
+        textArea.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        textArea.setText("jLabel6");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -186,8 +183,8 @@ public class Formulario extends javax.swing.JDialog {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(textArea, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel9)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(jPanel2Layout.createSequentialGroup()
@@ -209,10 +206,10 @@ public class Formulario extends javax.swing.JDialog {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
-                .addGap(25, 25, 25)
+                .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textArea, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel9)
                 .addGap(18, 18, 18)
@@ -237,7 +234,7 @@ public class Formulario extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbotonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -256,12 +253,8 @@ public class Formulario extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
-        String areaSeleccionada=(String)jComboBox1.getSelectedItem();
+        String areaSeleccionada=(String)textArea.getText();
         String informeAvanzado=jTextArea1.getText()!=null?jTextArea1.getText():"";
         String informeBasico=jTextArea2.getText()!=null?jTextArea2.getText():"";
         String foto=TextRutaImagen.getText()!=null?TextRutaImagen.getText():" ";
@@ -269,10 +262,6 @@ public class Formulario extends javax.swing.JDialog {
         boolean resultado=controladorForm.guardarFormulario(areaSeleccionada, informeBasico, informeAvanzado,foto,foto1, id);
         if(resultado){
             JOptionPane.showMessageDialog(rootPane, "Se ha guardado el formulario exitosamente");
-            ControladorAbuelo controlador = new ControladorAbuelo();
-            SeleccionarAbuelo i= new SeleccionarAbuelo(null, resultado, controlador);
-            i.setVisible(true);
-            this.setVisible(false);
             this.dispose();
             
         }
@@ -328,6 +317,10 @@ public class Formulario extends javax.swing.JDialog {
         imprimir.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jbotonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbotonVolverActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jbotonVolverActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -370,7 +363,6 @@ public class Formulario extends javax.swing.JDialog {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -384,5 +376,6 @@ public class Formulario extends javax.swing.JDialog {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JButton jbotonVolver;
+    private javax.swing.JLabel textArea;
     // End of variables declaration//GEN-END:variables
 }

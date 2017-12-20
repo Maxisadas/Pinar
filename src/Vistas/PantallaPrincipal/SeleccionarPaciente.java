@@ -5,10 +5,11 @@
  */
 package Vistas.PantallaPrincipal;
 
+import Controlador.ControladorABMAbuelos.ControladorABMAbuelos;
 import Controlador.ControladorAbuelo.ControladorAbuelo;
 import Controlador.DTO.DTOAbuelo;
-import Modelo.Usuario;
-import Vistas.PantallaPrincipalEnfermeria.FormularioEnfermeria;
+import Modelo.DetalleInforme;
+import Modelo.DetalleInforme.TipoInforme;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -19,35 +20,22 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Maxi
+ * @author User
  */
-public class SeleccionarAbuelo extends javax.swing.JDialog {
+public class SeleccionarPaciente extends javax.swing.JDialog {
+
     ControladorAbuelo controlador;
     private Long id;
-    boolean formulario;
-    private Usuario usuario;
-    private Long idPersonal;
+    private TipoInforme tipoInforme;
     /**
-     * Creates new form SeleccionarAbuelo
+     * Creates new form SeleccionarPaciente
      */
-    public SeleccionarAbuelo(java.awt.Frame parent, boolean modal,ControladorAbuelo controlador,Long idPersonal) {
+    public SeleccionarPaciente(java.awt.Frame parent, boolean modal,TipoInforme tipo) {
         super(parent, modal);
-        this.formulario = true; //SI ES TRUE ENTRA AL FORMULARIO DE LOS MEDICOS
+        controlador=new ControladorAbuelo();
+        tipoInforme=tipo;
         initComponents();
-        this.idPersonal=idPersonal;
-        this.setLocationRelativeTo(null);
-        this.controlador=controlador;
-        jPanel1.setVisible(false);
-    }
-    
-        public SeleccionarAbuelo(java.awt.Frame parent, boolean modal,Usuario usuario) {
-        super(parent, modal);
-        this.formulario = false; //SI ES FALSE ENTRA AL FORMULARIO DE ENFERMERIA
-        this.usuario = usuario;
-        initComponents();
-        this.setLocationRelativeTo(null);
-        this.controlador= new ControladorAbuelo();
-        jPanel1.setVisible(false);
+        
     }
 
     /**
@@ -62,6 +50,7 @@ public class SeleccionarAbuelo extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         textDNI = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -75,20 +64,22 @@ public class SeleccionarAbuelo extends javax.swing.JDialog {
         textTalla = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Seleccione un paciente para realizar el informe:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 334, 36));
+        jLabel1.setText("Busque un paciente para consultar el historial clinico:");
 
         jLabel2.setText("Ingrese el DNI del paciente:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, -1, -1));
-        getContentPane().add(textDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(249, 55, 219, -1));
+
+        jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
@@ -123,7 +114,7 @@ public class SeleccionarAbuelo extends javax.swing.JDialog {
 
         textTalla.setText("jLabel6");
 
-        jButton3.setText("Realizar informe medico");
+        jButton3.setText("Consultar historial clinico");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -191,21 +182,54 @@ public class SeleccionarAbuelo extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jLabel10))
-                .addGap(0, 17, Short.MAX_VALUE))
+                .addGap(0, 13, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 642, -1));
-
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(474, 54, -1, -1));
-
         jButton2.setText("Volver");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 314, -1, -1));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(jLabel2)
+                        .addGap(25, 25, 25)
+                        .addComponent(textDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(299, 299, 299)
+                        .addComponent(jButton2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(textDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2)
+                .addContainerGap())
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -218,7 +242,7 @@ public class SeleccionarAbuelo extends javax.swing.JDialog {
             id=dto.getId();
             //Parte Grafica
             if(dto.getDTOobraSocial() != null){
-            textObraSocial.setText(dto.getDTOobraSocial().getNombreObraSocial());
+                textObraSocial.setText(dto.getDTOobraSocial().getNombreObraSocial());
             }else{
                 textObraSocial.setText("No tiene");
             }
@@ -227,37 +251,33 @@ public class SeleccionarAbuelo extends javax.swing.JDialog {
             jLabel10.setText(dto.getDni());
             jLabel6.setText(dto.getNombre()+" "+dto.getApellido());
             //Foto
-        if(dto.getFoto()!=null){
-            byte[] imagenbyte = dto.getFoto();
-            BufferedImage img = null;
-        try{ 
-          img = ImageIO.read(new ByteArrayInputStream(imagenbyte));
-          Image imagen = img;
-          imagen = imagen.getScaledInstance(130, 130, imagen.SCALE_DEFAULT);
-          jLabel5.setIcon(new ImageIcon(imagen));
-        }catch(IOException e){
-            System.out.println("error");
-        }
-        }
-            jPanel1.setVisible(true);           
+            if(dto.getFoto()!=null){
+                byte[] imagenbyte = dto.getFoto();
+                BufferedImage img = null;
+                try{
+                    img = ImageIO.read(new ByteArrayInputStream(imagenbyte));
+                    Image imagen = img;
+                    imagen = imagen.getScaledInstance(130, 130, imagen.SCALE_DEFAULT);
+                    jLabel5.setIcon(new ImageIcon(imagen));
+                }catch(IOException e){
+                    System.out.println("error");
+                }
+            }
+            jPanel1.setVisible(true);
         }
         else if(dto==null){
             JOptionPane.showMessageDialog(rootPane, "Error. Documento ingresado incorrecto");
         }
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        if(formulario){
-        Formulario i = new Formulario(null,true,id,idPersonal);
-        i.setVisible(true);
-        this.dispose();   
-        }else{
-         FormularioEnfermeria i = new FormularioEnfermeria(null,true,id,usuario);   
-         i.setVisible(true);
-        }
-
         
+            ConsultaHistorialClinico i= new ConsultaHistorialClinico(null, true,tipoInforme,id);
+            i.setVisible(true);
+            this.dispose();
+        
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
@@ -277,19 +297,20 @@ public class SeleccionarAbuelo extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SeleccionarAbuelo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SeleccionarPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SeleccionarAbuelo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SeleccionarPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SeleccionarAbuelo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SeleccionarPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SeleccionarAbuelo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SeleccionarPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
             }
         });
     }

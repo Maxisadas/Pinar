@@ -5,6 +5,7 @@
  */
 package Modelo;
 
+import Controlador.DTO.DTODetalleInforme;
 import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -36,7 +37,7 @@ public class DetalleInforme implements Serializable{
     @Column(name="foto",nullable=true)
     private byte[] fotoPaciente;
     @Column
-    private TipoInforme tipoInforme;
+    public TipoInforme tipoInforme;
     
     public DetalleInforme() {
     }
@@ -81,4 +82,12 @@ public class DetalleInforme implements Serializable{
         return tipoInforme;
     }
     
+    public static  DTODetalleInforme buildDTODetalleInforme(DetalleInforme detalleInforme){
+        DTODetalleInforme dto=new DTODetalleInforme();
+        dto.setId(detalleInforme.getId());
+        dto.setFechaElaboracion(detalleInforme.getInforme().getFechaElaboracion());
+        dto.setInformeMedico(detalleInforme.getInformeMedico());
+        dto.setPersonal(detalleInforme.getInforme().getPersonal().getApellido()+" "+detalleInforme.getInforme().getPersonal().getNombre() );
+        return dto;
+    }
 }

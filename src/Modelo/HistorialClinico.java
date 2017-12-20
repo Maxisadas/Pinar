@@ -26,8 +26,6 @@ public class HistorialClinico implements Serializable {
     private Long id;
     @OneToOne
     private Paciente paciente;
-    @OneToMany(fetch = FetchType.LAZY)
-    private Set<Informe> listInforme;
 
     public HistorialClinico() {
     }
@@ -38,14 +36,6 @@ public class HistorialClinico implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Set<Informe> getListInforme() {
-        return listInforme;
-    }
-
-    public void setListInforme(Set<Informe> listInforme) {
-        this.listInforme = listInforme;
     }
 
     public Paciente getPaciente() {
