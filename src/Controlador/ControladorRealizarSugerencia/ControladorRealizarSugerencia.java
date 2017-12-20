@@ -38,4 +38,10 @@ public class ControladorRealizarSugerencia {
         return exito;
     }
     
+    public boolean realizarConsulta(DTOConsulta dto,String nombrePersonalEnvia){
+        boolean exito = experto.realizarConsulta(dto, nombrePersonalEnvia);
+        FachadaInterna.getInstancia().finalizarTransaccion();
+        return exito;
+    }
+    
 }

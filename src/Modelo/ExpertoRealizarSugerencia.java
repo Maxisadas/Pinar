@@ -51,7 +51,7 @@ public class ExpertoRealizarSugerencia {
     }
     
     public List<TipoPrioridad> buscarPrioridad(){
-        List<Object> listaPrioridadEncontrada = HibernateUtil.getSession().createQuery("SELECT p FROM TipoPrioridad p").list();
+        List<Object> listaPrioridadEncontrada = HibernateUtil.getSession().createQuery("SELECT p FROM TipoPrioridad p ORDER BY p.nombre DESC").list();
         List<TipoPrioridad> listaPrioridad = new ArrayList<>();
         for(Object o : listaPrioridadEncontrada){
             TipoPrioridad tp = (TipoPrioridad) o;
@@ -84,6 +84,38 @@ public class ExpertoRealizarSugerencia {
         FachadaInterna.getInstancia().guardar(detalle);  
         FachadaInterna.getInstancia().guardar(consulta);    
         }    
+
+        return true;
+        }catch(Exception e){
+           return false; 
+        }
+        
+        
+        
+        
+    }
+    
+        public boolean realizarConsulta(DTOConsulta dto,String nombrePersonalEnvia){
+        try{
+        
+        Date fechaHoy = new Date();
+        DetalleConsulta detalle = new DetalleConsulta();
+        TipoPrioridad tipoPrioridad = (TipoPrioridad) HibernateUtil.getSession().createQuery("SELECT t FROM TipoPrioridad t WHERE t.nombre=:nombre").setParameter("nombre", dto.getPrioridad()).uniqueResult();
+        List<Object> listPersonal = HibernateUtil.getSession().createQuery("SELECT p FROM Personal p").list();
+        for(Object x : listPersonal){
+        Personal personal = (Personal) x;   
+        Consulta consulta = new Consulta();
+        detalle.setTipoPrioridad(tipoPrioridad);
+        detalle.setDetalleConsulta(dto.getDetalleConsulta());
+        consulta.setDetalleConsulta(detalle);
+        consulta.setFechaElaboracionConsulta(fechaHoy);
+        consulta.setVisto(false);
+        consulta.setPersonal(personal);
+        consulta.setNombrePersonalEnvia(nombrePersonalEnvia);
+        FachadaInterna.getInstancia().guardar(detalle);  
+        FachadaInterna.getInstancia().guardar(consulta);
+        }
+            
 
         return true;
         }catch(Exception e){

@@ -87,17 +87,19 @@ Personal personal;
          System.gc();
         jPanel5.removeAll();
             int y = 0;
+
         List<DTOConsulta> listdto = controlador.verificarSugerencias(personal);
         for(DTOConsulta dto :listdto){
             Sugerencia sugerencia = new Sugerencia(dto,controlador);
             sugerencia.setVisible(true);
             sugerencia.setBounds(0, y, 285, 105);
             jPanel5.add(sugerencia);
-            jPanel5.validate();
             y = y + 106;
-           
+            jPanel5.setSize(jPanel5.getWidth(), jPanel5.getHeight() + 106);
+            jPanel5.validate();
             
         }
+   
     }
     
     
@@ -167,7 +169,17 @@ Personal personal;
 
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        jPanel5.setLayout(null);
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 288, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 387, Short.MAX_VALUE)
+        );
+
         jScrollPane2.setViewportView(jPanel5);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N

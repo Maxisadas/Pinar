@@ -145,7 +145,15 @@ String nombrePersonalEnvia;
             new String [] {
                 "Profesional", "Rol", "Area"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(jTable1);
 
         jButton2.setText("Agregar");
@@ -163,6 +171,12 @@ String nombrePersonalEnvia;
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
+            }
+        });
+
+        jComboBox2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox2ItemStateChanged(evt);
             }
         });
 
@@ -282,6 +296,19 @@ String nombrePersonalEnvia;
 
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if("1".equals(jComboBox2.getItemAt(jComboBox2.getSelectedIndex()))){
+        DTOConsulta dto = new DTOConsulta();
+        dto.setPrioridad(jComboBox2.getItemAt(jComboBox2.getSelectedIndex()));
+        dto.setDetalleConsulta(jTextArea1.getText());
+        if(controlador.realizarConsulta(dto,nombrePersonalEnvia)){
+            JOptionPane.showMessageDialog(null, "Se envio con exito", "Exito", 1);
+            this.dispose();
+        }else{
+            
+            JOptionPane.showMessageDialog(null, "No se pudo realizar la consulta, debido a una desconexion con la base de datos, verifique su conexion a la red o contacte con el administrador", "Error", 0);
+        }
+        
+        }else{
         List<DTOConsulta> list = new ArrayList<>();
         for(DTOPersonal personal : personalSeleccionado){
         DTOConsulta dto = new DTOConsulta();    
@@ -298,12 +325,34 @@ String nombrePersonalEnvia;
             
             JOptionPane.showMessageDialog(null, "No se pudo realizar la consulta, debido a una desconexion con la base de datos, verifique su conexion a la red o contacte con el administrador", "Error", 0);
         }
+            
+        }
+        
+        
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jComboBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox2ItemStateChanged
+        if("1".equals(jComboBox2.getSelectedItem().toString())){
+            modelo.setRowCount(0);
+            modelo.addRow(new Object[]{"Se enviara a todo el personal medico"});
+            jLabel3.setVisible(false);
+            jComboBox1.setVisible(false);
+            jButton2.setVisible(false);
+            jTable1.disable();
+            
+        }else{
+            modelo.setRowCount(0);
+            jLabel3.setVisible(true);
+            jComboBox1.setVisible(true);
+            jButton2.setVisible(true);
+            jTable1.enable();
+        }
+    }//GEN-LAST:event_jComboBox2ItemStateChanged
 
 
     /**
