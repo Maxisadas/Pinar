@@ -24,7 +24,7 @@ public class ExpertoConsultarSugerencia {
             Consulta consulta = (Consulta) o;
             DTOConsulta dto = new DTOConsulta();
             dto.setDetalleConsulta(consulta.getDetalleConsulta().getDetalleConsulta());
-            dto.setNombreArea(consulta.getPersonal().getArea().getNombreArea());
+            dto.setNombreArea(consulta.getAreaEnviada());
             dto.setNombreProfesional(consulta.getNombrePersonalEnvia());
             dto.setNumeroConsulta(consulta.getId());
             dto.setPrioridad(consulta.getDetalleConsulta().getTipoPrioridad().getNombre());

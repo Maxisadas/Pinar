@@ -26,6 +26,16 @@ public class HistorialClinico implements Serializable {
     private Long id;
     @OneToOne
     private Paciente paciente;
+    @OneToOne
+    private HistorialClinicoEstado historialEstado;
+
+    public HistorialClinicoEstado getHistorial() {
+        return historialEstado;
+    }
+
+    public void setHistorial(HistorialClinicoEstado historialEstado) {
+        this.historialEstado = historialEstado;
+    }
 
     public HistorialClinico() {
     }

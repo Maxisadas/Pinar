@@ -65,7 +65,7 @@ public class ExpertoRealizarSugerencia {
     }
     
     
-    public boolean realizarConsulta(List<DTOConsulta> listdto,String nombrePersonalEnvia){
+    public boolean realizarConsulta(List<DTOConsulta> listdto,String nombrePersonalEnvia,String areaEnviada){
         try{
         for(Object o : listdto){
         DTOConsulta dto = (DTOConsulta) o;    
@@ -80,6 +80,7 @@ public class ExpertoRealizarSugerencia {
         consulta.setFechaElaboracionConsulta(fechaHoy);
         consulta.setVisto(false);
         consulta.setPersonal(personal);
+        consulta.setAreaEnviada(areaEnviada);
         consulta.setNombrePersonalEnvia(nombrePersonalEnvia);
         FachadaInterna.getInstancia().guardar(detalle);  
         FachadaInterna.getInstancia().guardar(consulta);    
@@ -95,13 +96,13 @@ public class ExpertoRealizarSugerencia {
         
     }
     
-        public boolean realizarConsulta(DTOConsulta dto,String nombrePersonalEnvia){
+        public boolean realizarConsulta(DTOConsulta dto,String nombrePersonalEnvia,Long idPersonal,String areaEnviada){
         try{
         
         Date fechaHoy = new Date();
         DetalleConsulta detalle = new DetalleConsulta();
         TipoPrioridad tipoPrioridad = (TipoPrioridad) HibernateUtil.getSession().createQuery("SELECT t FROM TipoPrioridad t WHERE t.nombre=:nombre").setParameter("nombre", dto.getPrioridad()).uniqueResult();
-        List<Object> listPersonal = HibernateUtil.getSession().createQuery("SELECT p FROM Personal p").list();
+        List<Object> listPersonal = HibernateUtil.getSession().createQuery("SELECT p FROM Personal p WHERE p.id <>" +idPersonal).list();
         for(Object x : listPersonal){
         Personal personal = (Personal) x;   
         Consulta consulta = new Consulta();
@@ -111,6 +112,7 @@ public class ExpertoRealizarSugerencia {
         consulta.setFechaElaboracionConsulta(fechaHoy);
         consulta.setVisto(false);
         consulta.setPersonal(personal);
+        consulta.setAreaEnviada(areaEnviada);
         consulta.setNombrePersonalEnvia(nombrePersonalEnvia);
         FachadaInterna.getInstancia().guardar(detalle);  
         FachadaInterna.getInstancia().guardar(consulta);

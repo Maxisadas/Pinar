@@ -34,6 +34,16 @@ public class Consulta implements Serializable {
     private String nombrePersonalEnvia;
     @Column 
     private boolean visto;
+    @Column
+    private String AreaEnviada;
+
+    public String getAreaEnviada() {
+        return AreaEnviada;
+    }
+
+    public void setAreaEnviada(String AreaEnviada) {
+        this.AreaEnviada = AreaEnviada;
+    }
 
     public Date getFechaElaboracionConsulta() {
         return fechaElaboracionConsulta;

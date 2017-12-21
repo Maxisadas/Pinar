@@ -60,7 +60,7 @@ Personal personal;
             jMenu2.setVisible(true);
             jMenu3.setVisible(true);
         }else{
-            if("Director Medico".equals(usuario.getPersonal().getRol().getNombreRol())){
+            if("Director Medico".equals(usuario.getPersonal().getRol().getNombreRol()) || "Gerente".equals(usuario.getPersonal().getRol().getNombreRol())){
                 jMenu2.setVisible(false);
                 jMenu3.setVisible(true);
             }else{
@@ -86,8 +86,9 @@ Personal personal;
     public void refrescar(){
          System.gc();
         jPanel5.removeAll();
-            int y = 0;
-
+        jPanel5.setSize(288, 387);
+        int y = 0;
+        int contador = 0;
         List<DTOConsulta> listdto = controlador.verificarSugerencias(personal);
         for(DTOConsulta dto :listdto){
             Sugerencia sugerencia = new Sugerencia(dto,controlador);
@@ -95,11 +96,15 @@ Personal personal;
             sugerencia.setBounds(0, y, 285, 105);
             jPanel5.add(sugerencia);
             y = y + 106;
-            jPanel5.setSize(jPanel5.getWidth(), jPanel5.getHeight() + 106);
-            jPanel5.validate();
+            if(contador >= 3){
+            jPanel5.setSize(jPanel5.getWidth(), jPanel5.getHeight() + 106);    
+            }
+            
+            contador++;
             
         }
-   
+        jPanel5.setPreferredSize(jPanel5.getSize());
+        jPanel5.validate();
     }
     
     
@@ -381,7 +386,7 @@ Personal personal;
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void botonRealizarInterconsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRealizarInterconsultaActionPerformed
-        Interconsulta i = new Interconsulta(this,true,personal.getId(),personal.getNombre() + " " + personal.getApellido());
+        Interconsulta i = new Interconsulta(this,true,personal.getId(),personal.getNombre() + " " + personal.getApellido(),personal.getArea().getNombreArea());
         i.setVisible(true);
     }//GEN-LAST:event_botonRealizarInterconsultaActionPerformed
 

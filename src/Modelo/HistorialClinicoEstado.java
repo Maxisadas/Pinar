@@ -27,8 +27,7 @@ public class HistorialClinicoEstado implements Serializable {
     private Date fechaEstado;
     @ManyToOne
     private EstadoHistorialClinico estadoHistorialClinico;
-    @ManyToOne
-    private HistorialClinico historialClinico;
+    
 
     public HistorialClinicoEstado() {
     }
@@ -57,13 +56,5 @@ public class HistorialClinicoEstado implements Serializable {
         this.fechaEstado = fechaEstado;
     }
 
-    public HistorialClinico getHistorialClinico() {
-        return historialClinico;
-    }
-
-    public void setHistorialClinico(HistorialClinico historialClinico) {
-        this.historialClinico = historialClinico;
-    }
-    
-    
+  
 }

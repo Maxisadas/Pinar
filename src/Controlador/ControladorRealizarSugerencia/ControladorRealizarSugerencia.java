@@ -32,14 +32,14 @@ public class ControladorRealizarSugerencia {
         return lista;
     }
     
-    public boolean realizarConsulta(List<DTOConsulta> dto,String nombrePersonalEnvia){
-        boolean exito = experto.realizarConsulta(dto,nombrePersonalEnvia);
+    public boolean realizarConsulta(List<DTOConsulta> dto,String nombrePersonalEnvia,String areaEnviada){
+        boolean exito = experto.realizarConsulta(dto,nombrePersonalEnvia,areaEnviada);
         FachadaInterna.getInstancia().finalizarTransaccion();
         return exito;
     }
     
-    public boolean realizarConsulta(DTOConsulta dto,String nombrePersonalEnvia){
-        boolean exito = experto.realizarConsulta(dto, nombrePersonalEnvia);
+    public boolean realizarConsulta(DTOConsulta dto,String nombrePersonalEnvia,Long idPersonal,String areaEnviada){
+        boolean exito = experto.realizarConsulta(dto, nombrePersonalEnvia,idPersonal,areaEnviada);
         FachadaInterna.getInstancia().finalizarTransaccion();
         return exito;
     }

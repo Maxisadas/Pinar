@@ -25,6 +25,8 @@ ControladorRealizarSugerencia controlador;
 List<DTOPersonal> personalASeleccionar;
 List<DTOPersonal> personalSeleccionado;
 String nombrePersonalEnvia;
+Long idPersonal;
+String nombreArea;
     /**
      * Creates new form Interconsulta
      * @param parent
@@ -32,8 +34,10 @@ String nombrePersonalEnvia;
      * @param idPersonal
      * @param nombrePersonalEnvia
      */
-    public Interconsulta(java.awt.Frame parent, boolean modal,Long idPersonal,String nombrePersonalEnvia) {
+    public Interconsulta(java.awt.Frame parent, boolean modal,Long idPersonal,String nombrePersonalEnvia,String nombreArea) {
         super(parent, modal);
+        this.nombreArea = nombreArea;
+        this.idPersonal = idPersonal;
         controlador = new ControladorRealizarSugerencia();
         this.nombrePersonalEnvia = nombrePersonalEnvia;
         personalASeleccionar = new ArrayList<>();
@@ -300,7 +304,7 @@ String nombrePersonalEnvia;
         DTOConsulta dto = new DTOConsulta();
         dto.setPrioridad(jComboBox2.getItemAt(jComboBox2.getSelectedIndex()));
         dto.setDetalleConsulta(jTextArea1.getText());
-        if(controlador.realizarConsulta(dto,nombrePersonalEnvia)){
+        if(controlador.realizarConsulta(dto,nombrePersonalEnvia,idPersonal,nombreArea)){
             JOptionPane.showMessageDialog(null, "Se envio con exito", "Exito", 1);
             this.dispose();
         }else{
@@ -309,7 +313,9 @@ String nombrePersonalEnvia;
         }
         
         }else{
+        if(personalSeleccionado.size() > 0){
         List<DTOConsulta> list = new ArrayList<>();
+        
         for(DTOPersonal personal : personalSeleccionado){
         DTOConsulta dto = new DTOConsulta();    
         dto.setDetalleConsulta(jTextArea1.getText());
@@ -318,7 +324,8 @@ String nombrePersonalEnvia;
         dto.setPrioridad(jComboBox2.getItemAt(jComboBox2.getSelectedIndex()));
         list.add(dto);
         }
-        if(controlador.realizarConsulta(list,nombrePersonalEnvia)){
+        
+        if(controlador.realizarConsulta(list,nombrePersonalEnvia,nombreArea)){
             JOptionPane.showMessageDialog(null, "Se envio con exito", "Exito", 1);
             this.dispose();
         }else{
@@ -326,8 +333,12 @@ String nombrePersonalEnvia;
             JOptionPane.showMessageDialog(null, "No se pudo realizar la consulta, debido a una desconexion con la base de datos, verifique su conexion a la red o contacte con el administrador", "Error", 0);
         }
             
+        }else{
+           JOptionPane.showMessageDialog(null, "Por favor seleccione un personal a enviar", "Error", 0);
+ 
+            
         }
-        
+        }
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -385,7 +396,7 @@ String nombrePersonalEnvia;
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Interconsulta dialog = new Interconsulta(new javax.swing.JFrame(), true, Long.parseLong("1"),"Diego");
+                Interconsulta dialog = new Interconsulta(new javax.swing.JFrame(), true, Long.parseLong("1"),"Diego","1");
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

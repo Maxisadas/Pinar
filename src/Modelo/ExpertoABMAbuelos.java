@@ -33,6 +33,7 @@ public class ExpertoABMAbuelos {
         Date fechaHoy = new Date();
         ObraSocial obra = new ObraSocial();
         Paciente paciente = new Paciente();
+        
         if(abuelo.getDTOobraSocial() != null){
         obra.setCredencialDeAfiliacion(abuelo.getDTOobraSocial().getCredencialDeAfiliacion());
         obra.setDisposicionNro(abuelo.getDTOobraSocial().getDisposicionNro());
@@ -57,7 +58,18 @@ public class ExpertoABMAbuelos {
         FachadaInterna.getInstancia().guardar(obra);
             
         }
- 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     HistorialClinico historial = new HistorialClinico();
+     EstadoHistorialClinico estado = new EstadoHistorialClinico();
+     HistorialClinicoEstado historialfecha = new HistorialClinicoEstado();
+     estado.setNombre("Creado");
+     historialfecha.setEstadoHistorialClinico(estado);
+     historialfecha.setFechaEstado(fechaHoy);
+     historial.setHistorial(historialfecha);
+     historial.setPaciente(paciente);
+     
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         
         Paciente abueloExistente =(Paciente) HibernateUtil.getSession().createQuery("SELECT p FROM Paciente p WHERE p.dni= :dni AND p.fechaBaja="+null).setParameter("dni", abuelo.getDni()).uniqueResult();
@@ -80,7 +92,9 @@ public class ExpertoABMAbuelos {
                 
              paciente.setFotoPaciente(abuelo.getFoto());   
             }
-            
+            FachadaInterna.getInstancia().guardar(estado);
+            FachadaInterna.getInstancia().guardar(historialfecha);
+            FachadaInterna.getInstancia().guardar(historial);
             FachadaInterna.getInstancia().guardar(paciente);
             return true;
             
