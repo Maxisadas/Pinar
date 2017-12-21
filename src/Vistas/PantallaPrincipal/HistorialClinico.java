@@ -6,6 +6,7 @@
 package Vistas.PantallaPrincipal;
 
 import Controlador.DTO.DTODetalleInforme;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -18,6 +19,10 @@ public class HistorialClinico extends javax.swing.JPanel {
      */
     public HistorialClinico(DTODetalleInforme dto) {
         initComponents();
+        SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy");
+        textFechaElaboracion.setText(formateador.format(dto.getFechaElaboracion()));
+        textNombreArea.setText("");//NEGRO, NO HAS SETEADO EL NOMBRE DEL AREA DESDE DONDE SE ENVIO EL INFORME. AGREGALO AL DTO
+        textNombreMedico.setText("");//ACA PONE EL NOMBRE COMPLETO DEL MEDICO Nombre + Apellido dentro del String
     }
 
     /**
