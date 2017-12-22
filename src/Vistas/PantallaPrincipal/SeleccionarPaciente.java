@@ -35,6 +35,7 @@ public class SeleccionarPaciente extends javax.swing.JDialog {
         controlador=new ControladorAbuelo();
         tipoInforme=tipo;
         initComponents();
+        this.setLocationRelativeTo(null);
         jPanel1.setVisible(false);
         
     }

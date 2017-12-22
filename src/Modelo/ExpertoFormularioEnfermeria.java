@@ -33,13 +33,10 @@ public class ExpertoFormularioEnfermeria {
             informe.setFechaElaboracion(new Date());
             informe.setPaciente(abuelo);
             informe.setPersonal(personal);
-            DetalleInforme informeB= new DetalleInforme();
-            informeB.setInformeMedico(dto.getInformetext());
-            informeB.setInforme(informe);
             DetalleInforme informeAv= new DetalleInforme();
+            informeAv.setTipoInforme(DetalleInforme.TipoInforme.AVANZADO);
             informeAv.setInforme(informe);
             informeAv.setInformeMedico(dto.getInformetext());
-            FachadaInterna.getInstancia().guardar(informeB);
             FachadaInterna.getInstancia().guardar(informeAv);
             FachadaInterna.getInstancia().guardar(informe);
                 return true;
