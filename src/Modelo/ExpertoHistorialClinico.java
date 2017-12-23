@@ -18,9 +18,9 @@ import java.util.List;
 public class ExpertoHistorialClinico {
     public List<DTODetalleInforme> buscarHistorialPorPaciente(Long idPaciente,TipoInforme tipoInforme){
         HistorialClinico historialClinico=(HistorialClinico) HibernateUtil.getSession().createQuery("SELECT h FROM HistorialClinico h WHERE "
-                + "h.paciente.id:idPaciente ").setParameter("idPaciente", idPaciente).uniqueResult();
-        String hql= "SELECT i.id FROM Informe i WHERE i.paciente.id:id AND i.historialClinico.id=:idHistorial";
-        List<Long> listaIds= (List<Long>)HibernateUtil.getSession().createQuery(hql).setParameter("id", idPaciente).list();
+                + "h.paciente.id=:idPaciente ").setParameter("idPaciente", idPaciente).uniqueResult();
+        String hql= "SELECT i.id FROM Informe i WHERE i.paciente.id=:id AND i.historialClinico.id=:idHistorial";
+        List<Long> listaIds= (List<Long>)HibernateUtil.getSession().createQuery(hql).setParameter("id", idPaciente).setParameter("idHistorial", historialClinico.getId()).list();
         
         List<DetalleInforme> listaDetalle=(List<DetalleInforme>)HibernateUtil.getSession().createQuery("SELECT de FROM DetalleInforme de"
                 + " WHERE de.tipoInforme=:tipo AND de.informe.id IN :ids").setParameter("tipo",tipoInforme).setParameterList("ids",listaIds).list();

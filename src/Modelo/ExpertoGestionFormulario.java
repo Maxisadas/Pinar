@@ -21,9 +21,11 @@ public class ExpertoGestionFormulario {
         if(!informeAvanzado.isEmpty()  || !informeBasico.isEmpty()){
             Usuario usuarioLogueado=ExpertoIniciarSesion.getUsuarioLogueado(ExpertoIniciarSesion.idLogueado);
             Paciente abuelo=(Paciente)HibernateUtil.getSession().createQuery("SELECT p FROM Paciente p WHERE p.id=:id").setParameter("id", idPaciente).uniqueResult();
+            HistorialClinico historial=(HistorialClinico)HibernateUtil.getSession().createQuery("SELECT h FROM HistorialClinico h WHERE h.paciente.id=:id").setParameter("id", idPaciente).uniqueResult();
             Informe informe=new Informe();
             informe.setFechaElaboracion(new Date());
             informe.setPaciente(abuelo);
+            informe.setHistorialClinico(historial);
             informe.setPersonal(usuarioLogueado.getPersonal());
             DetalleInforme informeB= new DetalleInforme();
             informeB.setInformeMedico(informeBasico);
