@@ -36,6 +36,26 @@ public class Consulta implements Serializable {
     private boolean visto;
     @Column
     private String AreaEnviada;
+    @Column
+    private String Nombreabuelo;
+    @ManyToOne
+    private Paciente paciente;
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
+    }
+
+    public String getNombreabuelo() {
+        return Nombreabuelo;
+    }
+
+    public void setNombreabuelo(String Nombreabuelo) {
+        this.Nombreabuelo = Nombreabuelo;
+    }
 
     public String getAreaEnviada() {
         return AreaEnviada;

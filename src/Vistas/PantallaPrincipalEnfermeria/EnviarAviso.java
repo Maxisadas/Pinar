@@ -5,11 +5,20 @@
  */
 package Vistas.PantallaPrincipalEnfermeria;
 
+import Controlador.ControladorEnviarNotificacion.ControladorEnviarNotificacion;
+import Controlador.DTO.DTOAbuelo;
 import Controlador.DTO.DTOConsulta;
 import Controlador.DTO.DTOPersonal;
 import static Modelo.Consulta_.nombrePersonalEnvia;
+import Modelo.TipoPrioridad;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
@@ -18,13 +27,38 @@ import javax.swing.JOptionPane;
  * @author Maxi
  */
 public class EnviarAviso extends javax.swing.JDialog {
-
+ControladorEnviarNotificacion controlador;
+List<DTOAbuelo> listaAbuelos;
+Long idPersonal;
+String nombreArea;
+String nombrePersonalEnvia;
     /**
      * Creates new form EnviarAviso
      */
-    public EnviarAviso(java.awt.Frame parent, boolean modal) {
+    public EnviarAviso(java.awt.Frame parent, boolean modal,Long idPersonal,String nombreArea, String nombrePersonalEnvia) {
         super(parent, modal);
         initComponents();
+        listaAbuelos = new ArrayList<>();
+        controlador = new ControladorEnviarNotificacion();
+        this.idPersonal = idPersonal;
+        this.nombreArea = nombreArea;
+        this.nombrePersonalEnvia = nombrePersonalEnvia;
+        llenarCombos();
+    }
+    
+    public void llenarCombos(){
+        List<DTOAbuelo> lista = controlador.buscar();
+        listaAbuelos = lista;
+        for(DTOAbuelo dto : lista){
+            
+            jComboBox1.addItem(dto.getNombre() + " " + dto.getApellido() + " DNI: " + dto.getDni());
+        }
+        
+        List<TipoPrioridad> listaPri = controlador.buscarPrioridad();
+        for(TipoPrioridad prioridad : listaPri){
+            jComboBox2.addItem(prioridad.getNombre());
+            
+        }
     }
 
     /**
@@ -173,11 +207,35 @@ public class EnviarAviso extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
+        byte[] imagenbyte = listaAbuelos.get(jComboBox1.getSelectedIndex()).getFoto();
+        
+        BufferedImage img = null;
+        try{
+           
+          img = ImageIO.read(new ByteArrayInputStream(imagenbyte));
+          Image imagen = img;
+          imagen = imagen.getScaledInstance(130, 130, imagen.SCALE_DEFAULT);
+          jLabel8.setIcon(new ImageIcon(imagen));
+        }catch(IOException e){
+            System.out.println("error");
+        }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+       
+        DTOConsulta dto = new DTOConsulta();
+        dto.setPrioridad(jComboBox2.getItemAt(jComboBox2.getSelectedIndex()));
+        dto.setDetalleConsulta(jTextArea1.getText());
+        dto.setIdAbuelo(listaAbuelos.get(jComboBox1.getSelectedIndex()).getId());
+        if(controlador.realizarConsulta(dto,nombrePersonalEnvia,idPersonal,nombreArea)){
+            JOptionPane.showMessageDialog(null, "Se envio con exito", "Exito", 1);
+            this.dispose();
+        }else{
+            
+            JOptionPane.showMessageDialog(null, "No se pudo realizar la consulta, debido a una desconexion con la base de datos, verifique su conexion a la red o contacte con el administrador", "Error", 0);
+        }
+        
+        
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -211,14 +269,7 @@ public class EnviarAviso extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                EnviarAviso dialog = new EnviarAviso(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
+
             }
         });
     }

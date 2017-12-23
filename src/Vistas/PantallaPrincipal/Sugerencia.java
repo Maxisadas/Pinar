@@ -25,6 +25,7 @@ ControladorConsultarSugerencia controlador;
         initComponents();
         this.controlador = controlador;
         this.dto = dto;
+        jLabel1.setVisible(false);
         SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy");
         fecha.setText(formateador.format(dto.getFechaCreacion()));
         nombreArea.setText(dto.getNombreArea());
@@ -32,6 +33,9 @@ ControladorConsultarSugerencia controlador;
         if(Integer.parseInt(dto.getPrioridad()) == 1){
           Font fuente = new Font("Tahoma",Font.BOLD,14);
           Color color = new Color(255,0,0);
+          jLabel1.setVisible(true);
+          jLabel1.setFont(fuente);
+          jLabel1.setForeground(color);
           jLabel9.setFont(fuente);
           jLabel9.setForeground(color);
           nombrePrioridad.setText(dto.getPrioridad());
@@ -84,6 +88,7 @@ ControladorConsultarSugerencia controlador;
         nombreArea = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         fecha = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         SugerenciaNueva.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
 
@@ -113,6 +118,8 @@ ControladorConsultarSugerencia controlador;
 
         fecha.setText("jLabel14");
 
+        jLabel1.setText("¡URGENTE!");
+
         javax.swing.GroupLayout SugerenciaNuevaLayout = new javax.swing.GroupLayout(SugerenciaNueva);
         SugerenciaNueva.setLayout(SugerenciaNuevaLayout);
         SugerenciaNuevaLayout.setHorizontalGroup(
@@ -130,18 +137,23 @@ ControladorConsultarSugerencia controlador;
                             .addComponent(jLabel11)
                             .addGroup(SugerenciaNuevaLayout.createSequentialGroup()
                                 .addComponent(fecha)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                                 .addComponent(jLabel9)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(SugerenciaNuevaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(SugerenciaNuevaLayout.createSequentialGroup()
-                        .addComponent(nombrePrioridad)
-                        .addContainerGap())
-                    .addGroup(SugerenciaNuevaLayout.createSequentialGroup()
-                        .addComponent(nombreArea)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                        .addComponent(jButton4))
-                    .addComponent(nombreMedico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(nombreMedico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SugerenciaNuevaLayout.createSequentialGroup()
+                        .addGroup(SugerenciaNuevaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nombreArea)
+                            .addComponent(nombrePrioridad))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(SugerenciaNuevaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(SugerenciaNuevaLayout.createSequentialGroup()
+                                .addGap(0, 21, Short.MAX_VALUE)
+                                .addComponent(jButton4))
+                            .addGroup(SugerenciaNuevaLayout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(0, 0, Short.MAX_VALUE))))))
         );
         SugerenciaNuevaLayout.setVerticalGroup(
             SugerenciaNuevaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,7 +169,8 @@ ControladorConsultarSugerencia controlador;
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(SugerenciaNuevaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
-                            .addComponent(nombrePrioridad)))
+                            .addComponent(nombrePrioridad)
+                            .addComponent(jLabel1)))
                     .addGroup(SugerenciaNuevaLayout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(fecha)))
@@ -195,6 +208,7 @@ ControladorConsultarSugerencia controlador;
     private javax.swing.JPanel SugerenciaNueva;
     private javax.swing.JLabel fecha;
     private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel3;

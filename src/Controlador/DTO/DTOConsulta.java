@@ -21,7 +21,35 @@ public class DTOConsulta {
     private boolean visto;
     private Date fechaCreacion;
     private String nombrePersonaEnvia;
+    private Long idAbuelo;
+    private String nombreAbuelo;
+    private byte[] foto;
 
+    public byte[] getFoto() {
+        return foto;
+    }
+
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
+    }
+
+    public String getNombreAbuelo() {
+        return nombreAbuelo;
+    }
+
+    public void setNombreAbuelo(String nombreAbuelo) {
+        this.nombreAbuelo = nombreAbuelo;
+    }
+
+    public Long getIdAbuelo() {
+        return idAbuelo;
+    }
+
+    public void setIdAbuelo(Long idAbuelo) {
+        this.idAbuelo = idAbuelo;
+    }
+
+  
     public String getNombrePersonaEnvia() {
         return nombrePersonaEnvia;
     }

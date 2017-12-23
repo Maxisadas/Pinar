@@ -7,6 +7,8 @@ package Vistas.PantallaPrincipal;
 
 import Controlador.ControladorConsultarSugerencia.ControladorConsultarSugerencia;
 import Controlador.DTO.DTOConsulta;
+import java.awt.Color;
+import java.awt.Font;
 import java.text.SimpleDateFormat;
 
 /**
@@ -28,9 +30,22 @@ ControladorConsultarSugerencia controlador;
         SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy");
         fecha.setText(formateador.format(dto.getFechaCreacion()));
         nombreArea.setText(dto.getNombreArea());
-        nombrePrioridad.setText(dto.getPrioridad());
+        
+       
         nombreProfesional.setText(dto.getNombreProfesional());
         jTextArea1.setText(dto.getDetalleConsulta());
+        if("1".equals(dto.getPrioridad())){
+            
+          Font fuente = new Font("Tahoma",Font.BOLD,14);
+          Color color = new Color(255,0,0);
+          jLabel6.setFont(fuente);
+          jLabel6.setForeground(color);
+          nombrePrioridad.setText(dto.getPrioridad());
+          nombrePrioridad.setFont(fuente);
+          nombrePrioridad.setForeground(color);
+        }else{
+           nombrePrioridad.setText(dto.getPrioridad()); 
+        }
     }
 
     /**
@@ -55,6 +70,7 @@ ControladorConsultarSugerencia controlador;
         fecha = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -101,6 +117,8 @@ ControladorConsultarSugerencia controlador;
             }
         });
 
+        jLabel6.setText("¡URGENTE!");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -116,9 +134,12 @@ ControladorConsultarSugerencia controlador;
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(nombreArea, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nombrePrioridad)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nombrePrioridad))
+                    .addComponent(jLabel6))
                 .addGap(29, 29, 29))
             .addComponent(jScrollPane1)
             .addGroup(layout.createSequentialGroup()
@@ -144,10 +165,15 @@ ControladorConsultarSugerencia controlador;
                     .addComponent(nombreProfesional)
                     .addComponent(jLabel2)
                     .addComponent(nombrePrioridad))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(nombreArea))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(nombreArea)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel6)))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -218,6 +244,7 @@ ControladorConsultarSugerencia controlador;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel nombreArea;

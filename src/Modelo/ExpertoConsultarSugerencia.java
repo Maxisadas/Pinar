@@ -30,6 +30,15 @@ public class ExpertoConsultarSugerencia {
             dto.setPrioridad(consulta.getDetalleConsulta().getTipoPrioridad().getNombre());
             dto.setVisto(consulta.isVisto());
             dto.setFechaCreacion(consulta.getFechaElaboracionConsulta());
+            if(consulta.getPaciente() != null){
+                dto.setIdAbuelo(consulta.getPaciente().getId());
+                dto.setFoto(consulta.getPaciente().getFotoPaciente());
+                
+            }
+            if(consulta.getNombreabuelo() != null){
+                dto.setNombreAbuelo(consulta.getNombreabuelo());
+            }
+            
             listdto.add(dto);
         }
         

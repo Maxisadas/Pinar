@@ -43,6 +43,7 @@ import javax.swing.Timer;
 public class InterfazPantallaPrincipal extends javax.swing.JFrame {
 ControladorConsultarSugerencia controlador;
 Personal personal;
+Timer timer;
 
     /**
      * Creates new form InterfazPantallaPrincipal
@@ -72,7 +73,7 @@ Personal personal;
     }
     
     public void start(){
-        Timer timer = new Timer(2000, new ActionListener(){
+        timer = new Timer(2000, new ActionListener(){
 
             public void actionPerformed(ActionEvent e) {
             refrescar();    
@@ -81,6 +82,9 @@ Personal personal;
         
         timer.start();
         
+    }
+    public void stop(){
+        timer.stop();
     }
     
     public void refrescar(){
@@ -93,7 +97,7 @@ Personal personal;
         for(DTOConsulta dto :listdto){
             Sugerencia sugerencia = new Sugerencia(dto,controlador);
             sugerencia.setVisible(true);
-            sugerencia.setBounds(0, y, 285, 105);
+            sugerencia.setBounds(0, y, 270, 105);
             jPanel5.add(sugerencia);
             y = y + 106;
             if(contador >= 3){
@@ -391,13 +395,14 @@ Personal personal;
     }//GEN-LAST:event_botonRealizarInterconsultaActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        stop();
         Login i = new Login();
         i.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        EnviarAviso i = new EnviarAviso(this,true);
+        EnviarAviso i = new EnviarAviso(this,true,personal.getId(),personal.getArea().getNombreArea(),personal.getNombre() + " " +personal.getApellido());
         i.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
