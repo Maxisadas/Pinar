@@ -4,6 +4,7 @@ import java.util.*;
 import org.hibernate.*;
 import org.hibernate.criterion.*;
 import DTO.DTOCriterio;
+import javax.swing.JOptionPane;
 
 
 public class FachadaInterna
@@ -28,6 +29,8 @@ public class FachadaInterna
         }
         catch (ClassNotFoundException e){
             System.out.println("Error creating criteria. " + e);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "No se pudo establecer la conexion con la base de datos, por favor revise su conexion de RED", "Error", 0);
         }
         if (criterioList != null){
             for (DTOCriterio criterio : criterioList){
@@ -80,6 +83,8 @@ public class FachadaInterna
         }
         catch (ClassNotFoundException e){
             System.out.println("Error creating criteria. " + e);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "No se pudo establecer la conexion con la base de datos, por favor revise su conexion de RED", "Error", 0);
         }
         if (criterioList != null){
             for (DTOCriterio criterio : criterioList){
@@ -129,20 +134,31 @@ public class FachadaInterna
     }
 
     public void iniciarTransaccion (){
+        try{
         Transaction transaccion = HibernateUtil.getSession().getTransaction();
         if(transaccion.isActive() == false ){ //SI NO HAY UNA TRANSACCION, LA CREA
             HibernateUtil.getSession().beginTransaction();
-        }        
+        }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "No se pudo establecer la conexion con la base de datos, por favor revise su conexion de RED", "Error", 0);
+        }
     }
 
     public void finalizarTransaccion (){        
-        HibernateUtil.getSession().getTransaction().commit();
+        try{HibernateUtil.getSession().getTransaction().commit();
         HibernateUtil.getSession().close();
-        HibernateUtil.getSessionFactory().close();            
+        HibernateUtil.getSessionFactory().close();   
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "No se pudo establecer la conexion con la base de datos, por favor revise su conexion de RED", "Error", 0);
+        }
     }
     
     public void eliminar (Object objeto){
-        HibernateUtil.getSession().delete(objeto);
+        try{
+            HibernateUtil.getSession().delete(objeto);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "No se pudo establecer la conexion con la base de datos, por favor revise su conexion de RED", "Error", 0);
+        }
         //no hacer iniciar transaccion ni commit en esta parte, se hace en el finalizar transaccion
     }
 }

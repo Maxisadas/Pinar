@@ -11,6 +11,7 @@ import Controlador.Persistencia.HibernateUtil;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  *
  * @author Maxi
@@ -18,8 +19,9 @@ import java.util.List;
 public class ExpertoConsultarSugerencia {
     
     public List<DTOConsulta> verificarSugerencias(Personal personal){
-        List listaConsultasDetectada = HibernateUtil.getSession().createQuery("SELECT c FROM Consulta c INNER JOIN c.personal AS personal WHERE personal.id=" + personal.getId()).list();
-        List<DTOConsulta> listdto = new ArrayList<>();
+        try{
+            List listaConsultasDetectada = HibernateUtil.getSession().createQuery("SELECT c FROM Consulta c INNER JOIN c.personal AS personal WHERE personal.id=" + personal.getId()).list();
+            List<DTOConsulta> listdto = new ArrayList<>();
         for(Object o : listaConsultasDetectada){
             Consulta consulta = (Consulta) o;
             DTOConsulta dto = new DTOConsulta();
@@ -44,6 +46,14 @@ public class ExpertoConsultarSugerencia {
         
         
         return listdto;
+        }catch(Exception e){
+            
+            return null;
+
+        }
+        
+        
+
     }
     
     public void visto(DTOConsulta dto){

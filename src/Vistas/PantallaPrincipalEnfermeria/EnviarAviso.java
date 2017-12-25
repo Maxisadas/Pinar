@@ -38,6 +38,7 @@ String nombrePersonalEnvia;
     public EnviarAviso(java.awt.Frame parent, boolean modal,Long idPersonal,String nombreArea, String nombrePersonalEnvia) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
         listaAbuelos = new ArrayList<>();
         controlador = new ControladorEnviarNotificacion();
         this.idPersonal = idPersonal;

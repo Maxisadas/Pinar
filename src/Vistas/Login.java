@@ -190,7 +190,12 @@ ControladorIniciarSesion controlador;
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                try{
+                    new Login().setVisible(true);
+                }catch(Exception e){
+                 JOptionPane.showMessageDialog(null, "No se pudo establecer la conexion con la base de datos, por favor revise su conexion de RED e inicie la aplicacion nuevamente", "Error", 0);
+                 System.exit(0);
+                }
             }
         });
     }
