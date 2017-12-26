@@ -6,18 +6,26 @@
 package Vistas.PantallaPrincipalEnfermeria;
 
 import Controlador.ControladorAbuelo.ControladorAbuelo;
+import Controlador.ControladorCalendario.ControladorCalendario;
 import Controlador.ControladorConsultarSugerencia.ControladorConsultarSugerencia;
 import Controlador.DTO.DTOConsulta;
 import static Modelo.Consulta_.personal;
+import Modelo.Evento;
 import Modelo.Personal;
 import Modelo.Usuario;
 import Vistas.Login;
 import Vistas.PantallaPrincipal.Background;
+import Vistas.PantallaPrincipal.Informes;
 import Vistas.PantallaPrincipal.SeleccionarAbuelo;
 import Vistas.PantallaPrincipal.Sugerencia;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import javax.swing.JPanel;
 import javax.swing.Timer;
 
 /**
@@ -26,6 +34,7 @@ import javax.swing.Timer;
  */
 public class PantallaPrincipalEnfermeria extends javax.swing.JFrame {
 ControladorConsultarSugerencia controlador;
+ControladorCalendario controladorEventos;
 Personal personal;
 Usuario usuario;
 Timer timer;
@@ -36,6 +45,7 @@ Timer timer;
     public PantallaPrincipalEnfermeria(Usuario usuario) {
         initComponents();
         this.usuario = usuario;
+        controladorEventos = new ControladorCalendario();
         personal = usuario.getPersonal();
         controlador = new ControladorConsultarSugerencia();
         this.setLocationRelativeTo(null);
@@ -58,6 +68,7 @@ Timer timer;
     
         public void refrescar(){
          System.gc();
+         
         jPanel9.removeAll();
         jPanel9.setSize(908, 215);
         jPanel5.removeAll();
@@ -97,10 +108,42 @@ Timer timer;
         jPanel9.validate();
         jPanel5.setPreferredSize(jPanel5.getSize());
         jPanel5.validate();
+        refrescarCalendario();
     }
         
          public void stop(){
         timer.stop();
+    }
+         
+         public void refrescarCalendario(){
+        Date fechaHoy = new Date();
+        Calendar cal = Calendar.getInstance();
+        JPanel jpanel = jCalendar1.getDayChooser().getDayPanel();
+        Component component[] = jpanel.getComponents();
+        
+        List<Evento> listaEventos = controladorEventos.consultarEvento();
+        Date fechaMarcada = jCalendar1.getDate();
+        for(Evento evento : listaEventos){
+         cal.setTime(evento.getFechaAsignada());   
+        int mes = evento.getFechaAsignada().getMonth();
+        int año =  evento.getFechaAsignada().getYear()+1900;
+            if(fechaMarcada.getMonth() == mes && fechaMarcada.getYear()+1900 == año){
+        cal.set(Calendar.DAY_OF_MONTH,1);
+        int offset = cal.get(Calendar.DAY_OF_WEEK)-1;
+        System.out.println(offset);
+        
+        int dia = offset + evento.getFechaAsignada().getDate() + 6;
+        System.out.println(dia);
+        
+        component[dia].setBackground(Color.red);
+            }
+        
+            
+    
+        
+        
+        }
+        
     }
 
     /**
@@ -126,6 +169,8 @@ Timer timer;
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel5 = new Background("/Vistas/imagenes/fondoPantallaPrincipaljpanel2.jpg");
+        jLabel7 = new javax.swing.JLabel();
+        jCalendar1 = new com.toedter.calendar.JCalendar();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
@@ -133,17 +178,21 @@ Timer timer;
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel8.setPreferredSize(new java.awt.Dimension(1280, 800));
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel11.setFont(new java.awt.Font("Algerian", 0, 36)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("sistema interno");
+        jPanel8.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1436, 40));
 
         textodeBienvenida2.setFont(new java.awt.Font("Andalus", 1, 24)); // NOI18N
         textodeBienvenida2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel8.add(textodeBienvenida2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 46, 1436, 19));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Lista de avisos de pacientes a revisar");
+        jPanel8.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, 910, -1));
 
         jScrollPane4.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane4.setPreferredSize(new java.awt.Dimension(908, 195));
@@ -163,15 +212,20 @@ Timer timer;
 
         jScrollPane4.setViewportView(jPanel9);
 
+        jPanel8.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, -1, 210));
+
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Menu principal");
+        jPanel8.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 95, 800, -1));
 
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("Realizar reporte de enfermeria");
+        jPanel8.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 480, 308, -1));
 
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("Consultar historial clinico del paciente");
+        jPanel8.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 480, 310, -1));
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/imagenes/informe.png"))); // NOI18N
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -179,12 +233,20 @@ Timer timer;
                 jButton5ActionPerformed(evt);
             }
         });
+        jPanel8.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 308, -1));
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/imagenes/historialclinico.jpg"))); // NOI18N
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        jPanel8.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 160, 310, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Lista de sugerencias");
+        jPanel8.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1142, 95, 294, -1));
 
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
@@ -201,72 +263,16 @@ Timer timer;
 
         jScrollPane2.setViewportView(jPanel5);
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(textodeBienvenida2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel8Layout.createSequentialGroup()
-                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 1136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel8Layout.createSequentialGroup()
-                                        .addGap(147, 147, 147)
-                                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(149, 149, 149)
-                                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPanel8Layout.createSequentialGroup()
-                                        .addGap(143, 143, 143)
-                                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 908, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(91, 91, 91)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2)))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addComponent(textodeBienvenida2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addComponent(jButton6)
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel15)
-                        .addGap(41, 41, 41)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
-                        .addGap(29, 29, 29))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel2))
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addGap(48, 48, 48)
-                                .addComponent(jButton5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel14))
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-        );
+        jPanel8.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1146, 118, -1, 380));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Calendario");
+        jPanel8.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 520, 410, -1));
+
+        jCalendar1.setMaximumSize(new java.awt.Dimension(184, 157));
+        jCalendar1.setMinimumSize(new java.awt.Dimension(1, 1));
+        jPanel8.add(jCalendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 550, 400, 222));
 
         jMenu1.setText("Menu");
 
@@ -308,6 +314,11 @@ Timer timer;
         this.dispose();
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+       Informes i = new Informes(this,true);
+        i.setVisible(true);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -346,12 +357,14 @@ Timer timer;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem7;

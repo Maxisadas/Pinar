@@ -17,6 +17,33 @@ public class DTODetalleInforme {
     private String informeMedico;
     private Date fechaElaboracion;
     private String personal;
+    private String nombreArea;
+    private String nombreMedico;
+    private byte[] foto;
+
+    public byte[] getFoto() {
+        return foto;
+    }
+
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
+    }
+
+    public String getNombreArea() {
+        return nombreArea;
+    }
+
+    public void setNombreArea(String nombreArea) {
+        this.nombreArea = nombreArea;
+    }
+
+    public String getNombreMedico() {
+        return nombreMedico;
+    }
+
+    public void setNombreMedico(String nombreMedico) {
+        this.nombreMedico = nombreMedico;
+    }
 
     public Long getId() {
         return id;

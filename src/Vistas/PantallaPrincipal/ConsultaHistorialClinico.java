@@ -7,9 +7,16 @@ package Vistas.PantallaPrincipal;
 
 import Controlador.ControladorABMAbuelos.ControladorABMAbuelos;
 import Controlador.ControladorHistorialClinico.ControladorHistorialClinico;
+import Controlador.DTO.DTOAbuelo;
 import Controlador.DTO.DTODetalleInforme;
 import Modelo.DetalleInforme.TipoInforme;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.List;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -25,31 +32,59 @@ public class ConsultaHistorialClinico extends javax.swing.JDialog {
     DefaultTableModel modelo;
     /**
      * Creates new form ConsultaInforme
+     * @param parent
+     * @param modal
+     * @param tipo
+     * @param dto
      */
-    public ConsultaHistorialClinico(java.awt.Frame parent, boolean modal,TipoInforme tipo,Long id) {
+    public ConsultaHistorialClinico(java.awt.Frame parent, boolean modal,TipoInforme tipo,DTOAbuelo dto) {
         super(parent, modal);
+        initComponents();
+        this.setLocationRelativeTo(null);
+        idPaciente = dto.getId();
         tipoInforme=tipo;
-        idPaciente=id;
         controlador= new ControladorABMAbuelos();
         controladorHistorial = new ControladorHistorialClinico();
-        initComponents();
+        textDNI.setText(dto.getDni());
+        textNombre.setText(dto.getNombre() + " " + dto.getApellido());
+        textObraSocial.setText(dto.getDTOobraSocial().getNombreObraSocial());
+        textPeso.setText(Double.toString(dto.getPeso()));
+        textTalla.setText(Double.toString(dto.getTalla()));
+        textTipoHistorial.setText(tipo.name());
+        ///////FOTO////
+                if(dto.getFoto()!=null){
+            byte[] imagenbyte = dto.getFoto();
+            BufferedImage img = null;
+        try{ 
+          img = ImageIO.read(new ByteArrayInputStream(imagenbyte));
+          Image imagen = img;
+          imagen = imagen.getScaledInstance(130, 130, imagen.SCALE_DEFAULT);
+          jLabel5.setIcon(new ImageIcon(imagen));
+        }catch(IOException e){
+            System.out.println("error");
+        }
+        }
+        ///////////////
         mostrarInformes();
     }
      
     public void mostrarInformes(){
         System.gc();
         int y = 0;
+        int contador = 0;
         ContenedoraDeHistorial.removeAll();
         ContenedoraDeHistorial.setSize(1047, 452);
         List<DTODetalleInforme> list = controladorHistorial.buscarHistorialPorPaciente(idPaciente, tipoInforme);
         for(DTODetalleInforme d : list){
             HistorialClinico informe = new HistorialClinico(d);
             informe.setVisible(true);
-            informe.setBounds(0, y, 1047, 130);
+            informe.setBounds(0, y, 1047, 153);
             ContenedoraDeHistorial.add(informe);
-            y = y + 135;
-            ContenedoraDeHistorial.setSize(ContenedoraDeHistorial.getWidth(),ContenedoraDeHistorial.getHeight() + 130);
-            
+            y = y + 154;
+            if(contador >= 3){
+            ContenedoraDeHistorial.setSize(ContenedoraDeHistorial.getWidth(),ContenedoraDeHistorial.getHeight() + 154);
+            }
+            contador++;
         }
         ContenedoraDeHistorial.setPreferredSize(ContenedoraDeHistorial.getSize());
         ContenedoraDeHistorial.validate();
@@ -68,7 +103,6 @@ public class ConsultaHistorialClinico extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         textTipoHistorial = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         textNombre = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -85,6 +119,7 @@ public class ConsultaHistorialClinico extends javax.swing.JDialog {
         jLabel9 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         ContenedoraDeHistorial = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
 
         jLabel3.setText("jLabel3");
 
@@ -93,8 +128,6 @@ public class ConsultaHistorialClinico extends javax.swing.JDialog {
         jLabel4.setText("Tipo Historial:");
 
         textTipoHistorial.setText("jLabel5");
-
-        jButton1.setText("Volver");
 
         jLabel1.setText("Paciente:");
 
@@ -124,8 +157,8 @@ public class ConsultaHistorialClinico extends javax.swing.JDialog {
             .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
+                    .addComponent(jLabel5)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         jLabel7.setText("DNI: ");
@@ -149,16 +182,19 @@ public class ConsultaHistorialClinico extends javax.swing.JDialog {
         jLabel9.setText("Informes recopilado");
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setAutoscrolls(true);
+        jScrollPane1.setMinimumSize(new java.awt.Dimension(1047, 452));
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(1047, 452));
 
         javax.swing.GroupLayout ContenedoraDeHistorialLayout = new javax.swing.GroupLayout(ContenedoraDeHistorial);
         ContenedoraDeHistorial.setLayout(ContenedoraDeHistorialLayout);
         ContenedoraDeHistorialLayout.setHorizontalGroup(
             ContenedoraDeHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1047, Short.MAX_VALUE)
+            .addGap(0, 1045, Short.MAX_VALUE)
         );
         ContenedoraDeHistorialLayout.setVerticalGroup(
             ContenedoraDeHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 452, Short.MAX_VALUE)
+            .addGap(0, 450, Short.MAX_VALUE)
         );
 
         jScrollPane1.setViewportView(ContenedoraDeHistorial);
@@ -174,36 +210,35 @@ public class ConsultaHistorialClinico extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(textNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(textDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(textObraSocial))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(textPeso)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textObraSocial))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textPeso))
+                        .addComponent(textTipoHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(121, 121, 121))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textTalla)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textTipoHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(173, 173, 173))
+                        .addComponent(textTalla)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(467, 467, 467))
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,23 +274,27 @@ public class ConsultaHistorialClinico extends javax.swing.JDialog {
                 .addGap(38, 38, 38)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jButton1.setText("Volver");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(472, 472, 472)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1))
         );
 
         pack();

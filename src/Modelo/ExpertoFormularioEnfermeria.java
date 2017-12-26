@@ -29,10 +29,12 @@ public class ExpertoFormularioEnfermeria {
             if(!dto.getInformetext().isEmpty()){
             Personal personal = (Personal) HibernateUtil.getSession().createQuery("SELECT p FROM Personal p WHERE p.id=" + dto.getIdPersonal()).uniqueResult();
             Paciente abuelo=(Paciente)HibernateUtil.getSession().createQuery("SELECT p FROM Paciente p WHERE p.id=:id").setParameter("id", dto.getIdAbuelo()).uniqueResult();
+            HistorialClinico historial=(HistorialClinico)HibernateUtil.getSession().createQuery("SELECT h FROM HistorialClinico h WHERE h.paciente.id=:id").setParameter("id", dto.getIdAbuelo()).uniqueResult();
             Informe informe=new Informe();
             informe.setFechaElaboracion(new Date());
             informe.setPaciente(abuelo);
             informe.setPersonal(personal);
+            informe.setHistorialClinico(historial);
             DetalleInforme informeAv= new DetalleInforme();
             informeAv.setTipoInforme(DetalleInforme.TipoInforme.AVANZADO);
             informeAv.setInforme(informe);

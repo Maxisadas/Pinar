@@ -30,6 +30,13 @@ public class ControladorCalendario {
         return experto.consultarEvento();
     }
     
+    public Evento buscarEvento(Date fechaElejida){
+       FachadaInterna.getInstancia().iniciarTransaccion();
+       Evento evento = experto.buscarEvento(fechaElejida);
+       FachadaInterna.getInstancia().finalizarTransaccion();
+       return evento;
+    }
+    
     
     
     

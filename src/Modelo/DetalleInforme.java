@@ -88,6 +88,9 @@ public class DetalleInforme implements Serializable{
         dto.setFechaElaboracion(detalleInforme.getInforme().getFechaElaboracion());
         dto.setInformeMedico(detalleInforme.getInformeMedico());
         dto.setPersonal(detalleInforme.getInforme().getPersonal().getApellido()+" "+detalleInforme.getInforme().getPersonal().getNombre() );
+        dto.setNombreArea(detalleInforme.getInforme().getPersonal().getArea().getNombreArea());
+        dto.setNombreMedico(detalleInforme.getInforme().getPersonal().getNombre() + " "+ detalleInforme.getInforme().getPersonal().getApellido());
+        dto.setFoto(detalleInforme.getInforme().getPaciente().getFotoPaciente());
         return dto;
     }
 }

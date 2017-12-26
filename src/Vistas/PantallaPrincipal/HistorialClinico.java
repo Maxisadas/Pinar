@@ -21,8 +21,9 @@ public class HistorialClinico extends javax.swing.JPanel {
         initComponents();
         SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy");
         textFechaElaboracion.setText(formateador.format(dto.getFechaElaboracion()));
-        textNombreArea.setText("");//NEGRO, NO HAS SETEADO EL NOMBRE DEL AREA DESDE DONDE SE ENVIO EL INFORME. AGREGALO AL DTO
-        textNombreMedico.setText("");//ACA PONE EL NOMBRE COMPLETO DEL MEDICO Nombre + Apellido dentro del String
+        textNombreArea.setText(dto.getNombreArea());
+        textNombreMedico.setText(dto.getNombreMedico());
+        jTextArea1.setText(dto.getInformeMedico());
     }
 
     /**
@@ -50,7 +51,9 @@ public class HistorialClinico extends javax.swing.JPanel {
         textFechaElaboracion.setText("jLabel2");
 
         jTextArea1.setEditable(false);
+        jTextArea1.setBackground(new java.awt.Color(211, 211, 211));
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
@@ -94,8 +97,9 @@ public class HistorialClinico extends javax.swing.JPanel {
                     .addComponent(textNombreArea)
                     .addComponent(jLabel3)
                     .addComponent(textNombreMedico))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 

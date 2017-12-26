@@ -72,4 +72,11 @@ public class ExpertoCalendario {
         return lista;
     }
     
+    public Evento buscarEvento(Date fechaElejida){
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String fechaasignada = format.format(fechaElejida);
+        Evento evento = (Evento) HibernateUtil.getSession().createQuery("SELECT e FROM Evento e WHERE e.fechaAsignada = :fecha").setParameter("fecha", fechaElejida).uniqueResult();
+        return evento;
+    }
+    
 }

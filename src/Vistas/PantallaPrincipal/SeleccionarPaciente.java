@@ -27,6 +27,7 @@ public class SeleccionarPaciente extends javax.swing.JDialog {
     ControladorAbuelo controlador;
     private Long id;
     private TipoInforme tipoInforme;
+    DTOAbuelo dto;
     /**
      * Creates new form SeleccionarPaciente
      */
@@ -238,7 +239,7 @@ public class SeleccionarPaciente extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //Buscar abuelo
-        DTOAbuelo dto=controlador.buscarPorDNI(textDNI.getText());
+        dto=controlador.buscarPorDNI(textDNI.getText());
         if(dto!=null){
             //Importante para poder ir a la otra ventana.
             id=dto.getId();
@@ -275,7 +276,7 @@ public class SeleccionarPaciente extends javax.swing.JDialog {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         
-            ConsultaHistorialClinico i= new ConsultaHistorialClinico(null, true,tipoInforme,id);
+            ConsultaHistorialClinico i= new ConsultaHistorialClinico(null, true,tipoInforme,dto);
             i.setVisible(true);
             this.dispose();
         
