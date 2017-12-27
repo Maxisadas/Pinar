@@ -16,6 +16,8 @@ import Modelo.Usuario;
 import Vistas.Login;
 import Vistas.PantallaPrincipal.Background;
 import Vistas.PantallaPrincipal.Informes;
+import Vistas.PantallaPrincipal.MostrarEvento;
+import Vistas.PantallaPrincipal.OrganizarEvento;
 import Vistas.PantallaPrincipal.SeleccionarAbuelo;
 import Vistas.PantallaPrincipal.Sugerencia;
 import java.awt.Color;
@@ -25,6 +27,7 @@ import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -171,6 +174,9 @@ Timer timer;
         jPanel5 = new Background("/Vistas/imagenes/fondoPantallaPrincipaljpanel2.jpg");
         jLabel7 = new javax.swing.JLabel();
         jCalendar1 = new com.toedter.calendar.JCalendar();
+        jButton7 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
@@ -183,7 +189,7 @@ Timer timer;
         jLabel11.setFont(new java.awt.Font("Algerian", 0, 36)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("sistema interno");
-        jPanel8.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1436, 40));
+        jPanel8.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 0, 1450, 40));
 
         textodeBienvenida2.setFont(new java.awt.Font("Andalus", 1, 24)); // NOI18N
         textodeBienvenida2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -212,7 +218,7 @@ Timer timer;
 
         jScrollPane4.setViewportView(jPanel9);
 
-        jPanel8.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, -1, 210));
+        jPanel8.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 550, -1, 210));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -225,7 +231,7 @@ Timer timer;
 
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("Consultar historial clinico del paciente");
-        jPanel8.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 480, 310, -1));
+        jPanel8.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 480, 310, -1));
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/imagenes/informe.png"))); // NOI18N
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -241,7 +247,7 @@ Timer timer;
                 jButton6ActionPerformed(evt);
             }
         });
-        jPanel8.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 160, 310, -1));
+        jPanel8.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, 310, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -274,6 +280,27 @@ Timer timer;
         jCalendar1.setMinimumSize(new java.awt.Dimension(1, 1));
         jPanel8.add(jCalendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 550, 400, 222));
 
+        jButton7.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
+        jButton7.setText("Consultar evento");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        jPanel8.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(918, 616, -1, 75));
+
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/imagenes/organizarEnfermeria.jpg"))); // NOI18N
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel8.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 160, 320, 310));
+
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Organizar Evento en calendario.");
+        jPanel8.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 480, 320, -1));
+
         jMenu1.setText("Menu");
 
         jMenuItem7.setText("Cerrar Sesion");
@@ -292,7 +319,7 @@ Timer timer;
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, 1436, Short.MAX_VALUE)
+            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, 1446, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -318,6 +345,22 @@ Timer timer;
        Informes i = new Informes(this,true);
         i.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        Date fechaelejida = jCalendar1.getDate();
+        Evento evento = controladorEventos.buscarEvento(fechaelejida);
+        if(evento != null){
+            MostrarEvento i = new MostrarEvento(this,true,evento);
+            i.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "No se encontro ningun evento registrado", "Error", 0);
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        OrganizarEvento i = new OrganizarEvento(this,true);
+        i.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -355,8 +398,10 @@ Timer timer;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -365,6 +410,7 @@ Timer timer;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem7;
