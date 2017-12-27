@@ -62,8 +62,8 @@ public class ExpertoCalendario {
     }
     
     public List<Evento> consultarEvento(){
-       
-        List listaEventos = HibernateUtil.getSession().createQuery("SELECT e FROM Evento e").list();
+        Date fechaHoy = new Date();
+        List listaEventos = HibernateUtil.getSession().createQuery("SELECT e FROM Evento e WHERE e.fechaAsignada>= :fecha ").setParameter("fecha", fechaHoy).list();
         List<Evento> lista = new ArrayList<>();
         for(Object o : listaEventos){
         Evento evento = (Evento) o;
