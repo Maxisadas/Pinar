@@ -69,7 +69,6 @@ ControladorConsultarSugerencia controlador;
         jLabel4 = new javax.swing.JLabel();
         fecha = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -110,13 +109,6 @@ ControladorConsultarSugerencia controlador;
 
         jLabel5.setText("Nota: Una vez leido este mensaje se eliminara en las proximas horas.");
 
-        jButton2.setText("volver");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
         jLabel6.setText("¡URGENTE!");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -143,9 +135,7 @@ ControladorConsultarSugerencia controlador;
                 .addGap(29, 29, 29))
             .addComponent(jScrollPane1)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton2)
-                .addGap(156, 156, 156)
+                .addGap(229, 229, 229)
                 .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
@@ -183,9 +173,7 @@ ControladorConsultarSugerencia controlador;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)))
+                .addComponent(jButton1))
         );
 
         pack();
@@ -195,10 +183,6 @@ ControladorConsultarSugerencia controlador;
         controlador.visto(dto);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -238,7 +222,6 @@ ControladorConsultarSugerencia controlador;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel fecha;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
