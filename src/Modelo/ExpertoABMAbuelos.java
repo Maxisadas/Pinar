@@ -35,25 +35,14 @@ public class ExpertoABMAbuelos {
         Paciente paciente = new Paciente();
         
         if(abuelo.getDTOobraSocial() != null){
-        obra.setCredencialDeAfiliacion(abuelo.getDTOobraSocial().getCredencialDeAfiliacion());
-        obra.setDisposicionNro(abuelo.getDTOobraSocial().getDisposicionNro());
         obra.setDomicilio(abuelo.getDTOobraSocial().getDomicilio());
-        obra.setEmitidoPor(abuelo.getDTOobraSocial().getEmitidoPor());
-        obra.setExpedienteNro(abuelo.getDTOobraSocial().getExpedienteNro());
-        obra.setFechaAltaCredencial(abuelo.getDTOobraSocial().getFechaAltaCredencial());
         obra.setFechaEmisionCredencial(abuelo.getDTOobraSocial().getFechaEmisionCredencial());
-        obra.setFechaVencimientoCredencial(abuelo.getDTOobraSocial().getFechaVencimientoCredencial());
         obra.setFechaVigenciaCredencial(abuelo.getDTOobraSocial().getFechaVigenciaCredencial());
-        obra.setFechaVigenciaMedico(abuelo.getDTOobraSocial().getFechaVigenciaMedico());
         obra.setFechaVigenciaModulo(abuelo.getDTOobraSocial().getFechaVigenciaModulo());
-        obra.setGp(abuelo.getDTOobraSocial().getGp());
         obra.setLocalidad(abuelo.getDTOobraSocial().getLocalidad());
         obra.setModuloInternacion(abuelo.getDTOobraSocial().getModuloInternacion());
         obra.setNombreObraSocial(abuelo.getDTOobraSocial().getNombreObraSocial());
-        obra.setNombremedicoCabecera(abuelo.getDTOobraSocial().getNombremedicoCabecera());
-        obra.setNroModulo(abuelo.getDTOobraSocial().getNroModulo());
         obra.setNumeroBeneficio(abuelo.getDTOobraSocial().getNumeroBeneficio());
-        obra.setNumeroMedicoCabecera(abuelo.getDTOobraSocial().getNumeroMedicoCabecera());
         paciente.setObraSocial(obra);
         FachadaInterna.getInstancia().guardar(obra);
             
@@ -148,25 +137,14 @@ public class ExpertoABMAbuelos {
          dtoabuelo.setFechadeNacimiento(paciente.getFechadeNacimiento());
          if(paciente.getObraSocial() != null){
          DTOObraSocial dto = new DTOObraSocial();
-         dto.setCredencialDeAfiliacion(paciente.getObraSocial().getCredencialDeAfiliacion());
-         dto.setDisposicionNro(paciente.getObraSocial().getDisposicionNro());
          dto.setDomicilio(paciente.getObraSocial().getDomicilio());
-         dto.setEmitidoPor(paciente.getObraSocial().getEmitidoPor());
-         dto.setExpedienteNro(paciente.getObraSocial().getExpedienteNro());
-         dto.setFechaAltaCredencial(paciente.getObraSocial().getFechaAltaCredencial());
          dto.setFechaEmisionCredencial(paciente.getObraSocial().getFechaEmisionCredencial());
-         dto.setFechaVencimientoCredencial(paciente.getObraSocial().getFechaVencimientoCredencial());
          dto.setFechaVigenciaCredencial(paciente.getObraSocial().getFechaVigenciaCredencial());
-         dto.setFechaVigenciaMedico(paciente.getObraSocial().getFechaVigenciaMedico());
          dto.setFechaVigenciaModulo(paciente.getObraSocial().getFechaVigenciaModulo());
-         dto.setGp(paciente.getObraSocial().getGp());
          dto.setLocalidad(paciente.getObraSocial().getLocalidad());
          dto.setModuloInternacion(paciente.getObraSocial().getModuloInternacion());
          dto.setNombreObraSocial(paciente.getObraSocial().getNombreObraSocial());
-         dto.setNombremedicoCabecera(paciente.getObraSocial().getNombremedicoCabecera());
-         dto.setNroModulo(paciente.getObraSocial().getNroModulo());
          dto.setNumeroBeneficio(paciente.getObraSocial().getNumeroBeneficio());
-         dto.setNumeroMedicoCabecera(paciente.getObraSocial().getNumeroMedicoCabecera());
          dtoabuelo.setDTOobraSocial(dto);
          }
          listaDTOAbuelo.add(dtoabuelo);
@@ -194,25 +172,14 @@ public class ExpertoABMAbuelos {
          dtoabuelo.setFechadeNacimiento(paciente.getFechadeNacimiento());
          if(paciente.getObraSocial() != null){
          DTOObraSocial dto = new DTOObraSocial();
-         dto.setCredencialDeAfiliacion(paciente.getObraSocial().getCredencialDeAfiliacion());
-         dto.setDisposicionNro(paciente.getObraSocial().getDisposicionNro());
          dto.setDomicilio(paciente.getObraSocial().getDomicilio());
-         dto.setEmitidoPor(paciente.getObraSocial().getEmitidoPor());
-         dto.setExpedienteNro(paciente.getObraSocial().getExpedienteNro());
-         dto.setFechaAltaCredencial(paciente.getObraSocial().getFechaAltaCredencial());
          dto.setFechaEmisionCredencial(paciente.getObraSocial().getFechaEmisionCredencial());
-         dto.setFechaVencimientoCredencial(paciente.getObraSocial().getFechaVencimientoCredencial());
          dto.setFechaVigenciaCredencial(paciente.getObraSocial().getFechaVigenciaCredencial());
-         dto.setFechaVigenciaMedico(paciente.getObraSocial().getFechaVigenciaMedico());
          dto.setFechaVigenciaModulo(paciente.getObraSocial().getFechaVigenciaModulo());
-         dto.setGp(paciente.getObraSocial().getGp());
          dto.setLocalidad(paciente.getObraSocial().getLocalidad());
          dto.setModuloInternacion(paciente.getObraSocial().getModuloInternacion());
          dto.setNombreObraSocial(paciente.getObraSocial().getNombreObraSocial());
-         dto.setNombremedicoCabecera(paciente.getObraSocial().getNombremedicoCabecera());
-         dto.setNroModulo(paciente.getObraSocial().getNroModulo());
          dto.setNumeroBeneficio(paciente.getObraSocial().getNumeroBeneficio());
-         dto.setNumeroMedicoCabecera(paciente.getObraSocial().getNumeroMedicoCabecera());
          dtoabuelo.setDTOobraSocial(dto);
          }
         
@@ -230,25 +197,14 @@ public class ExpertoABMAbuelos {
         if(obrasocialmodificada){
             
         ObraSocial obra = paciente.getObraSocial();
-        obra.setCredencialDeAfiliacion(abuelo.getDTOobraSocial().getCredencialDeAfiliacion());
-        obra.setDisposicionNro(abuelo.getDTOobraSocial().getDisposicionNro());
         obra.setDomicilio(abuelo.getDTOobraSocial().getDomicilio());
-        obra.setEmitidoPor(abuelo.getDTOobraSocial().getEmitidoPor());
-        obra.setExpedienteNro(abuelo.getDTOobraSocial().getExpedienteNro());
-        obra.setFechaAltaCredencial(abuelo.getDTOobraSocial().getFechaAltaCredencial());
         obra.setFechaEmisionCredencial(abuelo.getDTOobraSocial().getFechaEmisionCredencial());
-        obra.setFechaVencimientoCredencial(abuelo.getDTOobraSocial().getFechaVencimientoCredencial());
         obra.setFechaVigenciaCredencial(abuelo.getDTOobraSocial().getFechaVigenciaCredencial());
-        obra.setFechaVigenciaMedico(abuelo.getDTOobraSocial().getFechaVigenciaMedico());
         obra.setFechaVigenciaModulo(abuelo.getDTOobraSocial().getFechaVigenciaModulo());
-        obra.setGp(abuelo.getDTOobraSocial().getGp());
         obra.setLocalidad(abuelo.getDTOobraSocial().getLocalidad());
         obra.setModuloInternacion(abuelo.getDTOobraSocial().getModuloInternacion());
         obra.setNombreObraSocial(abuelo.getDTOobraSocial().getNombreObraSocial());
-        obra.setNombremedicoCabecera(abuelo.getDTOobraSocial().getNombremedicoCabecera());
-        obra.setNroModulo(abuelo.getDTOobraSocial().getNroModulo());
         obra.setNumeroBeneficio(abuelo.getDTOobraSocial().getNumeroBeneficio());
-        obra.setNumeroMedicoCabecera(abuelo.getDTOobraSocial().getNumeroMedicoCabecera());
         paciente.setObraSocial(obra);
         FachadaInterna.getInstancia().guardar(obra);
             
@@ -318,25 +274,14 @@ public class ExpertoABMAbuelos {
          dtoabuelo.setMotivoBaja(paciente.getMotivoBaja());
          if(paciente.getObraSocial() != null){
          DTOObraSocial dto = new DTOObraSocial();
-         dto.setCredencialDeAfiliacion(paciente.getObraSocial().getCredencialDeAfiliacion());
-         dto.setDisposicionNro(paciente.getObraSocial().getDisposicionNro());
          dto.setDomicilio(paciente.getObraSocial().getDomicilio());
-         dto.setEmitidoPor(paciente.getObraSocial().getEmitidoPor());
-         dto.setExpedienteNro(paciente.getObraSocial().getExpedienteNro());
-         dto.setFechaAltaCredencial(paciente.getObraSocial().getFechaAltaCredencial());
          dto.setFechaEmisionCredencial(paciente.getObraSocial().getFechaEmisionCredencial());
-         dto.setFechaVencimientoCredencial(paciente.getObraSocial().getFechaVencimientoCredencial());
          dto.setFechaVigenciaCredencial(paciente.getObraSocial().getFechaVigenciaCredencial());
-         dto.setFechaVigenciaMedico(paciente.getObraSocial().getFechaVigenciaMedico());
          dto.setFechaVigenciaModulo(paciente.getObraSocial().getFechaVigenciaModulo());
-         dto.setGp(paciente.getObraSocial().getGp());
          dto.setLocalidad(paciente.getObraSocial().getLocalidad());
          dto.setModuloInternacion(paciente.getObraSocial().getModuloInternacion());
          dto.setNombreObraSocial(paciente.getObraSocial().getNombreObraSocial());
-         dto.setNombremedicoCabecera(paciente.getObraSocial().getNombremedicoCabecera());
-         dto.setNroModulo(paciente.getObraSocial().getNroModulo());
          dto.setNumeroBeneficio(paciente.getObraSocial().getNumeroBeneficio());
-         dto.setNumeroMedicoCabecera(paciente.getObraSocial().getNumeroMedicoCabecera());
          dtoabuelo.setDTOobraSocial(dto);
          }
          listaDTOAbuelo.add(dtoabuelo);

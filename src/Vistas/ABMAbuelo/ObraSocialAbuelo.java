@@ -29,21 +29,11 @@ public class ObraSocialAbuelo extends javax.swing.JDialog {
             DTOAbuelo dto = controlador.buscar(idAbuelo);
             if(dto.getDTOobraSocial() != null){
             DNI.setText(dto.getDni());
-            DisposicionNro.setText(dto.getDTOobraSocial().getDisposicionNro());
             Domicilio.setText(dto.getDTOobraSocial().getDomicilio());
-            EmitidoPor.setText(dto.getDTOobraSocial().getEmitidoPor());
-            ExpedienteNro.setText(dto.getDTOobraSocial().getExpedienteNro());
             FechaVigenciaModulo.setText(dto.getDTOobraSocial().getFechaVigenciaModulo());
             Localidad.setText(dto.getDTOobraSocial().getLocalidad());
-            NombreMedico.setText(dto.getDTOobraSocial().getNombremedicoCabecera());
-            NroModulo.setText(dto.getDTOobraSocial().getNroModulo());
-            NumeroMedico.setText(dto.getDTOobraSocial().getNumeroMedicoCabecera());
-            fechaAltaCredencial.setText(dto.getDTOobraSocial().getFechaAltaCredencial());
-            fechaVigenciaMedica.setText(dto.getDTOobraSocial().getFechaVigenciaMedico());
-            fechavencimientoCredencial.setText(dto.getDTOobraSocial().getFechaVencimientoCredencial());
             moduloInternacion.setText(dto.getDTOobraSocial().getModuloInternacion());
             numeroBeneficio.setText(dto.getDTOobraSocial().getNumeroBeneficio());
-            textCredencialAfiliacion.setText(dto.getDTOobraSocial().getCredencialDeAfiliacion());
             textFechaVigenciaDeCredencial.setText(dto.getDTOobraSocial().getFechaVigenciaCredencial());
             textFechadeEmisionCredencial.setText(dto.getDTOobraSocial().getFechaEmisionCredencial());
             textNombreyApellido.setText(dto.getNombre() + " " + dto.getApellido());
@@ -66,44 +56,24 @@ public class ObraSocialAbuelo extends javax.swing.JDialog {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         label4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         textNombreyApellido = new javax.swing.JLabel();
-        textCredencialAfiliacion = new javax.swing.JLabel();
         textFechadeEmisionCredencial = new javax.swing.JLabel();
         textFechaVigenciaDeCredencial = new javax.swing.JLabel();
-        fechaAltaCredencial = new javax.swing.JLabel();
-        fechavencimientoCredencial = new javax.swing.JLabel();
         DNI = new javax.swing.JLabel();
         numeroBeneficio = new javax.swing.JLabel();
-        EmitidoPor = new javax.swing.JLabel();
-        ExpedienteNro = new javax.swing.JLabel();
         Domicilio = new javax.swing.JLabel();
-        NombreMedico = new javax.swing.JLabel();
         moduloInternacion = new javax.swing.JLabel();
-        DisposicionNro = new javax.swing.JLabel();
         Localidad = new javax.swing.JLabel();
-        NumeroMedico = new javax.swing.JLabel();
-        NroModulo = new javax.swing.JLabel();
-        fechaVigenciaMedica = new javax.swing.JLabel();
         FechaVigenciaModulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -114,37 +84,17 @@ public class ObraSocialAbuelo extends javax.swing.JDialog {
 
         jLabel2.setText("Nombre obra social:");
 
-        jLabel3.setText("Credencial de afiliacion:");
-
         label4.setText("Fecha de emision de credencial:");
 
         jLabel6.setText("Fecha de vigencia de credencial:");
 
-        jLabel7.setText("Fecha Alta credencial:");
-
-        jLabel8.setText("Fecha de vencimiento de credencial:");
-
         jLabel9.setText("Numero de beneficio:");
-
-        jLabel11.setText("Emitido por:");
-
-        jLabel12.setText("Expediente Nro:");
-
-        jLabel13.setText("Disposicion Nro:");
 
         jLabel14.setText("Domicilio:");
 
         jLabel15.setText("Localidad:");
 
-        jLabel16.setText("Nombre medico de cabecera:");
-
-        jLabel17.setText("Numero medico:");
-
-        jLabel18.setText("Fecha vigencia medica:");
-
         jLabel19.setText("Modulo de internacion:");
-
-        jLabel20.setText("Nro modulo:");
 
         jLabel21.setText("Fecha de vigencia del modulo:");
 
@@ -161,39 +111,19 @@ public class ObraSocialAbuelo extends javax.swing.JDialog {
 
         textNombreyApellido.setText("N/A");
 
-        textCredencialAfiliacion.setText("N/A");
-
         textFechadeEmisionCredencial.setText("N/A");
 
         textFechaVigenciaDeCredencial.setText("N/A");
-
-        fechaAltaCredencial.setText("N/A");
-
-        fechavencimientoCredencial.setText("N/A");
 
         DNI.setText("N/A");
 
         numeroBeneficio.setText("N/A");
 
-        EmitidoPor.setText("N/A");
-
-        ExpedienteNro.setText("N/A");
-
         Domicilio.setText("N/A");
-
-        NombreMedico.setText("N/A");
 
         moduloInternacion.setText("N/A");
 
-        DisposicionNro.setText("N/A");
-
         Localidad.setText("N/A");
-
-        NumeroMedico.setText("N/A");
-
-        NroModulo.setText("N/A");
-
-        fechaVigenciaMedica.setText("N/A");
 
         FechaVigenciaModulo.setText("N/A");
 
@@ -203,89 +133,6 @@ public class ObraSocialAbuelo extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel19)
-                    .addComponent(jLabel16)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel9)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(32, 32, 32)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(label4)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel5)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jLabel8))))
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ExpedienteNro)
-                            .addComponent(Domicilio)
-                            .addComponent(NombreMedico)
-                            .addComponent(moduloInternacion))
-                        .addGap(76, 76, 76)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel13)
-                                    .addComponent(jLabel15))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(DisposicionNro)
-                                    .addComponent(Localidad))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel20)
-                                    .addComponent(jLabel17))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(NumeroMedico)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel18))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(NroModulo)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel21)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(fechaVigenciaMedica)
-                                    .addComponent(FechaVigenciaModulo))
-                                .addGap(42, 42, 42))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(textFechadeEmisionCredencial)
-                        .addGap(72, 72, 72)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textFechaVigenciaDeCredencial)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fechaAltaCredencial)
-                        .addGap(35, 35, 35))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(textCredencialAfiliacion)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(textNombreyApellido)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(DNI)
-                        .addGap(168, 168, 168))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(numeroBeneficio)
-                            .addComponent(fechavencimientoCredencial)
-                            .addComponent(EmitidoPor))
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(316, 316, 316)
@@ -294,6 +141,49 @@ public class ObraSocialAbuelo extends javax.swing.JDialog {
                         .addGap(341, 341, 341)
                         .addComponent(jButton1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(textNombreyApellido)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(DNI)
+                                .addGap(168, 168, 168))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(114, 114, 114)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel15)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Localidad))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(textFechaVigenciaDeCredencial))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel21)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(FechaVigenciaModulo)))
+                                .addContainerGap(283, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel19)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel9)
+                            .addComponent(label4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textFechadeEmisionCredencial)
+                            .addComponent(numeroBeneficio)
+                            .addComponent(Domicilio)
+                            .addComponent(moduloInternacion))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -307,59 +197,29 @@ public class ObraSocialAbuelo extends javax.swing.JDialog {
                     .addComponent(jLabel10)
                     .addComponent(textNombreyApellido)
                     .addComponent(DNI))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(textCredencialAfiliacion))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label4)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
                     .addComponent(textFechadeEmisionCredencial)
-                    .addComponent(textFechaVigenciaDeCredencial)
-                    .addComponent(fechaAltaCredencial))
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(fechavencimientoCredencial))
-                .addGap(29, 29, 29)
+                    .addComponent(jLabel6)
+                    .addComponent(textFechaVigenciaDeCredencial))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(numeroBeneficio))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(EmitidoPor))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel13)
-                    .addComponent(ExpedienteNro)
-                    .addComponent(DisposicionNro))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(jLabel15)
                     .addComponent(Domicilio)
+                    .addComponent(jLabel15)
                     .addComponent(Localidad))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel16)
-                    .addComponent(jLabel17)
-                    .addComponent(jLabel18)
-                    .addComponent(NombreMedico)
-                    .addComponent(NumeroMedico)
-                    .addComponent(fechaVigenciaMedica))
-                .addGap(38, 38, 38)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
-                    .addComponent(jLabel20)
-                    .addComponent(jLabel21)
                     .addComponent(moduloInternacion)
-                    .addComponent(NroModulo)
+                    .addComponent(jLabel21)
                     .addComponent(FechaVigenciaModulo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(28, 28, 28))
         );
@@ -408,43 +268,23 @@ public class ObraSocialAbuelo extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel DNI;
-    private javax.swing.JLabel DisposicionNro;
     private javax.swing.JLabel Domicilio;
-    private javax.swing.JLabel EmitidoPor;
-    private javax.swing.JLabel ExpedienteNro;
     private javax.swing.JLabel FechaVigenciaModulo;
     private javax.swing.JLabel Localidad;
-    private javax.swing.JLabel NombreMedico;
-    private javax.swing.JLabel NroModulo;
-    private javax.swing.JLabel NumeroMedico;
-    private javax.swing.JLabel fechaAltaCredencial;
-    private javax.swing.JLabel fechaVigenciaMedica;
-    private javax.swing.JLabel fechavencimientoCredencial;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel label4;
     private javax.swing.JLabel moduloInternacion;
     private javax.swing.JLabel numeroBeneficio;
-    private javax.swing.JLabel textCredencialAfiliacion;
     private javax.swing.JLabel textFechaVigenciaDeCredencial;
     private javax.swing.JLabel textFechadeEmisionCredencial;
     private javax.swing.JLabel textNombreyApellido;

@@ -9,6 +9,7 @@ import Controlador.ControladorABMAbuelos.ControladorABMAbuelos;
 import Controlador.DTO.DTOAbuelo;
 import Controlador.DTO.DTOObraSocial;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.List;
 import javax.swing.ImageIcon;
@@ -25,6 +26,7 @@ public class AltaAbuelo extends javax.swing.JDialog {
 ControladorABMAbuelos controlador;
 DTOAbuelo dtoabuelo;
 boolean botonApretado;
+
     /**
      * Creates new form AltaAbuelo
      */
@@ -37,6 +39,24 @@ boolean botonApretado;
         botonApretado = false;
         
     }
+    
+           public boolean keyTyped(KeyEvent ke) { 
+            char c=ke.getKeyChar(); 
+             
+         
+          if(Character.isLetter(c)) { 
+              getToolkit().beep(); 
+               
+              ke.consume(); 
+               
+              JOptionPane.showMessageDialog(null, "Ingrese solo numeros", "Error", 0);
+              return false;
+               
+          }else{
+              return true;
+          } 
+         
+        } 
     
  
         
@@ -93,6 +113,23 @@ boolean botonApretado;
         jLabel7.setText("Peso:");
 
         jLabel8.setText("Talla:");
+
+        textDNI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textDNIActionPerformed(evt);
+            }
+        });
+        textDNI.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textDNIKeyPressed(evt);
+            }
+        });
+
+        TextPeso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextPesoActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Fecha de Nacimiento:");
 
@@ -285,6 +322,21 @@ boolean botonApretado;
        RegistrarObraSocial i = new RegistrarObraSocial(null,true);
        i.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void textDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textDNIActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textDNIActionPerformed
+
+    private void textDNIKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textDNIKeyPressed
+        if(!keyTyped(evt)){
+           textDNI.setText("");
+        }
+        
+    }//GEN-LAST:event_textDNIKeyPressed
+
+    private void TextPesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextPesoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextPesoActionPerformed
 
     /**
      * @param args the command line arguments

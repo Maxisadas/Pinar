@@ -193,8 +193,15 @@
     <Component class="javax.swing.JTextField" name="textApellido">
     </Component>
     <Component class="javax.swing.JTextField" name="textDNI">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textDNIActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textDNIKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="TextPeso">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextPesoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="textTalla">
     </Component>

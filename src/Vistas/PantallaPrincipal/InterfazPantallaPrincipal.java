@@ -27,6 +27,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DateFormat;
@@ -58,6 +59,8 @@ Timer timer;
      */
     public InterfazPantallaPrincipal(Usuario usuario){
         initComponents();
+        Image icon = new ImageIcon(getClass().getResource("/Vistas/imagenes/pinaricono.jpg")).getImage();
+        setIconImage(icon);
         personal = usuario.getPersonal();
         controlador = new ControladorConsultarSugerencia();
         controladorEventos = new ControladorCalendario();
