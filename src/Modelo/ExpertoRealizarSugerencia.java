@@ -88,6 +88,7 @@ public class ExpertoRealizarSugerencia {
 
         return true;
         }catch(Exception e){
+           HibernateUtil.getSession().close();
            return false; 
         }
         
@@ -121,6 +122,7 @@ public class ExpertoRealizarSugerencia {
 
         return true;
         }catch(Exception e){
+           HibernateUtil.getSession().close();
            return false; 
         }
         

@@ -39,6 +39,7 @@ List<byte[]> listaImagenes;
         super(parent, modal);
         this.controlador = new ControladorABMAbuelos();
         initComponents();
+        Image icon = new ImageIcon(getClass().getResource("/Vistas/imagenes/pinaricono.jpg")).getImage();
         this.setLocationRelativeTo(null);
         modelo = (DefaultTableModel) jTable1.getModel();
         llenarTabla();

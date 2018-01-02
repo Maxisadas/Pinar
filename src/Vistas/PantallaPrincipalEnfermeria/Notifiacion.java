@@ -9,7 +9,9 @@ import Controlador.ControladorConsultarSugerencia.ControladorConsultarSugerencia
 import Controlador.DTO.DTOConsulta;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import java.text.SimpleDateFormat;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -23,6 +25,7 @@ DTOConsulta dto;
      */
     public Notifiacion(DTOConsulta dto,ControladorConsultarSugerencia controlador) {
         initComponents();
+        Image icon = new ImageIcon(getClass().getResource("/Vistas/imagenes/pinaricono.jpg")).getImage();
         this.controlador = controlador;
         this.dto = dto;
         jLabel1.setVisible(false);
@@ -92,13 +95,13 @@ DTOConsulta dto;
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Nueva notificacion");
-        SugerenciaNueva.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 20));
+        SugerenciaNueva.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 20));
 
         jLabel7.setText("De:");
-        SugerenciaNueva.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 30, -1, -1));
+        SugerenciaNueva.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, -1, -1));
 
         nombreMedico.setText("jLabel8");
-        SugerenciaNueva.add(nombreMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 143, -1));
+        SugerenciaNueva.add(nombreMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 143, -1));
 
         jButton4.setText("Revisar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -106,19 +109,19 @@ DTOConsulta dto;
                 jButton4ActionPerformed(evt);
             }
         });
-        SugerenciaNueva.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, -1, -1));
+        SugerenciaNueva.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, -1, -1));
 
         jLabel9.setText("Prioridad");
-        SugerenciaNueva.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 20, -1, -1));
+        SugerenciaNueva.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 20, -1, -1));
 
         nombrePrioridad.setText("jLabel10");
-        SugerenciaNueva.add(nombrePrioridad, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 40, -1, -1));
+        SugerenciaNueva.add(nombrePrioridad, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 40, -1, -1));
 
         jLabel11.setText("Area:");
-        SugerenciaNueva.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 30, -1, -1));
+        SugerenciaNueva.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 30, -1, -1));
 
         nombreArea.setText("jLabel12");
-        SugerenciaNueva.add(nombreArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 30, -1, -1));
+        SugerenciaNueva.add(nombreArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 30, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel13.setText("Fecha enviada:");
@@ -129,13 +132,13 @@ DTOConsulta dto;
         SugerenciaNueva.add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
         jLabel1.setText("¡URGENTE!");
-        SugerenciaNueva.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 60, -1, -1));
+        SugerenciaNueva.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 60, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(SugerenciaNueva, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(SugerenciaNueva, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

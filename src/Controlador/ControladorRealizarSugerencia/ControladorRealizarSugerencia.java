@@ -28,17 +28,20 @@ public class ControladorRealizarSugerencia {
     }
     
     public List<TipoPrioridad> buscarPrioridad(){
+        FachadaInterna.getInstancia().iniciarTransaccion();
         List<TipoPrioridad> lista = experto.buscarPrioridad();
         return lista;
     }
     
     public boolean realizarConsulta(List<DTOConsulta> dto,String nombrePersonalEnvia,String areaEnviada){
+        FachadaInterna.getInstancia().iniciarTransaccion();
         boolean exito = experto.realizarConsulta(dto,nombrePersonalEnvia,areaEnviada);
         FachadaInterna.getInstancia().finalizarTransaccion();
         return exito;
     }
     
     public boolean realizarConsulta(DTOConsulta dto,String nombrePersonalEnvia,Long idPersonal,String areaEnviada){
+        FachadaInterna.getInstancia().iniciarTransaccion();
         boolean exito = experto.realizarConsulta(dto, nombrePersonalEnvia,idPersonal,areaEnviada);
         FachadaInterna.getInstancia().finalizarTransaccion();
         return exito;

@@ -147,7 +147,10 @@ public class FachadaInterna
     public void finalizarTransaccion (){        
         try{HibernateUtil.getSession().getTransaction().commit();
         HibernateUtil.getSession().close();
-        HibernateUtil.getSessionFactory().close();   
+        //HibernateUtil.getSessionFactory().close(); 
+        
+ 
+        
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "No se pudo establecer la conexion con la base de datos, por favor revise su conexion de RED", "Error", 0);
         }

@@ -47,7 +47,7 @@ public class ExpertoConsultarSugerencia {
         
         return listdto;
         }catch(Exception e){
-            
+            System.out.println(e);
             return null;
 
         }

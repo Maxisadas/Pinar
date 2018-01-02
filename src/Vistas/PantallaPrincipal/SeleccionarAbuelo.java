@@ -34,6 +34,7 @@ public class SeleccionarAbuelo extends javax.swing.JDialog {
         super(parent, modal);
         this.formulario = true; //SI ES TRUE ENTRA AL FORMULARIO DE LOS MEDICOS
         initComponents();
+        Image icon = new ImageIcon(getClass().getResource("/Vistas/imagenes/pinaricono.jpg")).getImage();
         this.idPersonal=idPersonal;
         this.setLocationRelativeTo(null);
         this.controlador=controlador;
@@ -45,6 +46,7 @@ public class SeleccionarAbuelo extends javax.swing.JDialog {
         this.formulario = false; //SI ES FALSE ENTRA AL FORMULARIO DE ENFERMERIA
         this.usuario = usuario;
         initComponents();
+        Image icon = new ImageIcon(getClass().getResource("/Vistas/imagenes/pinaricono.jpg")).getImage();
         this.setLocationRelativeTo(null);
         this.controlador= new ControladorAbuelo();
         jPanel1.setVisible(false);

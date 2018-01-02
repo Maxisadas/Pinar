@@ -21,7 +21,8 @@ public class ControladorFormularioEnfermeria {
         return experto.buscar(idabuelo, idPersonal);
      }
      
-     public boolean guardar(DTOFormulario dto){ 
+     public boolean guardar(DTOFormulario dto){
+          FachadaInterna.getInstancia().iniciarTransaccion();
          boolean exito = experto.guardar(dto);
          FachadaInterna.getInstancia().finalizarTransaccion();
          return exito;

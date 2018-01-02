@@ -36,6 +36,7 @@ public class SeleccionarPaciente extends javax.swing.JDialog {
         controlador=new ControladorAbuelo();
         tipoInforme=tipo;
         initComponents();
+        Image icon = new ImageIcon(getClass().getResource("/Vistas/imagenes/pinaricono.jpg")).getImage();
         this.setLocationRelativeTo(null);
         jPanel1.setVisible(false);
         

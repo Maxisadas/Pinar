@@ -22,10 +22,12 @@ public class ControladorConsultarSugerencia {
     public List<DTOConsulta> verificarSugerencias(Personal personal){
         FachadaInterna.getInstancia().iniciarTransaccion();
         List<DTOConsulta> listdto = experto.verificarSugerencias(personal);
+        FachadaInterna.getInstancia().finalizarTransaccion();
         return listdto;
     }
     
     public void visto(DTOConsulta dto){
+        FachadaInterna.getInstancia().iniciarTransaccion();
         experto.visto(dto);
         FachadaInterna.getInstancia().finalizarTransaccion();
     }

@@ -27,10 +27,12 @@ public class ControladorEnviarNotificacion {
     }
     
     public List<TipoPrioridad> buscarPrioridad(){
+        FachadaInterna.getInstancia().iniciarTransaccion();
         return experto.buscarPrioridad();
     }
     
     public boolean realizarConsulta(DTOConsulta dto,String nombrePersonalEnvia,Long idPersonal,String areaEnviada){
+        FachadaInterna.getInstancia().iniciarTransaccion();
         boolean exito = experto.realizarConsulta(dto, nombrePersonalEnvia, idPersonal, areaEnviada);
         FachadaInterna.getInstancia().finalizarTransaccion();
         return exito;

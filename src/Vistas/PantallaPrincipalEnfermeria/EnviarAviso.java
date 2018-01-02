@@ -209,7 +209,7 @@ String nombrePersonalEnvia;
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         byte[] imagenbyte = listaAbuelos.get(jComboBox1.getSelectedIndex()).getFoto();
-        
+        NombrePaciente.setText(listaAbuelos.get(jComboBox1.getSelectedIndex()).getNombre() + " " +listaAbuelos.get(jComboBox1.getSelectedIndex()).getApellido());
         BufferedImage img = null;
         try{
            

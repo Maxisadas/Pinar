@@ -54,9 +54,9 @@ ControladorIniciarSesion controlador;
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Algerian", 0, 24)); // NOI18N
-        jLabel2.setText("bienvenido al sistema Interno medico");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jLabel2.setText("   Bienvenido al Sistema Interno Medico");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 470, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 51));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
@@ -115,7 +115,7 @@ ControladorIniciarSesion controlador;
         getContentPane().add(textContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 150, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/imagenes/background-1591227_960_720.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 486, 424));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 0, 490, 424));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

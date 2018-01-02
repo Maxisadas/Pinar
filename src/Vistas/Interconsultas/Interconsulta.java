@@ -357,6 +357,7 @@ String nombreArea;
             jTable1.disable();
             
         }else{
+            personalSeleccionado.clear();
             modelo.setRowCount(0);
             jLabel3.setVisible(true);
             jComboBox1.setVisible(true);

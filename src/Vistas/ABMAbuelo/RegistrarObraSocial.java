@@ -8,10 +8,12 @@ package Vistas.ABMAbuelo;
 import Controlador.ControladorABMAbuelos.ControladorABMAbuelos;
 import Controlador.DTO.DTOAbuelo;
 import Controlador.DTO.DTOObraSocial;
+import java.awt.Image;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -25,6 +27,7 @@ public static DTOObraSocial dto;
     public RegistrarObraSocial(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        Image icon = new ImageIcon(getClass().getResource("/Vistas/imagenes/pinaricono.jpg")).getImage();
         this.setLocationRelativeTo(null);
         dto = new DTOObraSocial();
         

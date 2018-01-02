@@ -25,8 +25,6 @@ public class Consulta implements Serializable {
     @Id @GeneratedValue
     private Long id;
     @ManyToOne
-    private TipoConsulta tipoConsulta;
-    @ManyToOne
     private DetalleConsulta detalleConsulta;
     @ManyToOne
     private Personal personal;
@@ -120,13 +118,7 @@ public class Consulta implements Serializable {
 
 
 
-    public TipoConsulta getTipoConsulta() {
-        return tipoConsulta;
-    }
 
-    public void setTipoConsulta(TipoConsulta tipoConsulta) {
-        this.tipoConsulta = tipoConsulta;
-    }
     
     
 }

@@ -27,7 +27,10 @@ public class ControladorCalendario {
     }
     
     public List<Evento> consultarEvento(){
-        return experto.consultarEvento();
+        FachadaInterna.getInstancia().iniciarTransaccion();
+        List<Evento> list=experto.consultarEvento();
+        FachadaInterna.getInstancia().finalizarTransaccion();
+        return list;
     }
     
     public Evento buscarEvento(Date fechaElejida){

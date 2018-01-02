@@ -34,11 +34,12 @@ public class ControladorABMPersonal {
     }
     
     public List<DTOEspecializacion> buscarEspecialidad(){
-        
+         FachadaInterna.getInstancia().iniciarTransaccion();
         return experto.buscarEspecialidad();
     }
     
     public List<DTOArea> buscarArea(){
+         FachadaInterna.getInstancia().iniciarTransaccion();
         return experto.buscarArea();
     }
     

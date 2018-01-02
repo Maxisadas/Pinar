@@ -21,6 +21,7 @@ public class ControladorIniciarSesion {
      }
      
      public Usuario loguear(String nombreUsuario){
+         FachadaInterna.getInstancia().iniciarTransaccion();
          Usuario usuario = experto.loguear(nombreUsuario);
        
          return usuario;
