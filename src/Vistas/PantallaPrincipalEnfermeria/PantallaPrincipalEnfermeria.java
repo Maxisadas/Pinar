@@ -122,7 +122,6 @@ Timer timer;
     }
          
          public void refrescarCalendario(){
-        Date fechaHoy = new Date();
         Calendar cal = Calendar.getInstance();
         JPanel jpanel = jCalendar1.getDayChooser().getDayPanel();
         Component component[] = jpanel.getComponents();
@@ -134,18 +133,17 @@ Timer timer;
         int mes = evento.getFechaAsignada().getMonth();
         int año =  evento.getFechaAsignada().getYear()+1900;
             if(fechaMarcada.getMonth() == mes && fechaMarcada.getYear()+1900 == año){
-        cal.set(Calendar.DAY_OF_MONTH,1);
-        int offset = cal.get(Calendar.DAY_OF_WEEK)-1;
+        //cal.set(Calendar.DAY_OF_MONTH,1);
+        int offset = cal.get(Calendar.DAY_OF_MONTH)+6;
         System.out.println(offset);
         
-        int dia = offset + evento.getFechaAsignada().getDate() + 6;
+        int dia = offset;
         System.out.println(dia);
         
         component[dia].setBackground(Color.red);
             }
         
-            
-    
+
         
         
         }
@@ -414,7 +412,7 @@ Timer timer;
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 11, Short.MAX_VALUE))
+                .addGap(0, 8, Short.MAX_VALUE))
         );
 
         pack();
@@ -439,13 +437,25 @@ Timer timer;
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         Date fechaelejida = jCalendar1.getDate();
-        Evento evento = controladorEventos.buscarEvento(fechaelejida);
-        if(evento != null){
-            MostrarEvento i = new MostrarEvento(this,true,evento);
-            i.setVisible(true);
+        List<Evento> listaevento = controladorEventos.buscarEvento(fechaelejida);
+        if(listaevento.size()==1){
+            Evento evento = listaevento.get(0);
+            if(evento != null){
+                MostrarEvento i = new MostrarEvento(this,true,evento);
+                i.setVisible(true);
+            }else{
+            JOptionPane.showMessageDialog(null, "No se encontro ningun evento registrado", "Error", 0);    
+         
+            }
+            
         }else{
-            JOptionPane.showMessageDialog(null, "No se encontro ningun evento registrado", "Error", 0);
-        }
+            if(listaevento.size()>0){
+            MostrarEvento i = new MostrarEvento(this,true,listaevento);
+            i.setVisible(true);
+            }else{
+            JOptionPane.showMessageDialog(null, "No se encontro ningun evento registrado", "Error", 0);        
+            }
+        }  
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

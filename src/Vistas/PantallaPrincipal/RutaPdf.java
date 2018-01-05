@@ -5,13 +5,19 @@
  */
 package Vistas.PantallaPrincipal;
 
+
+import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
+import static com.itextpdf.kernel.pdf.PdfName.Font;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.property.TextAlignment;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
@@ -31,6 +37,7 @@ public class RutaPdf extends javax.swing.JDialog {
         super(parent, modal);
         this.contenido=contenido;
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -55,6 +62,8 @@ public class RutaPdf extends javax.swing.JDialog {
                 buttonRutaActionPerformed(evt);
             }
         });
+
+        ruta.setEditable(false);
 
         jButton1.setText("Generar PDF");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -111,6 +120,8 @@ public class RutaPdf extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonRutaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Date fechaHoy = new Date();
+        SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy");
         final String r=ruta.getText()+".pdf";
         //Initialize PDF writer
         PdfWriter writer=null;
@@ -122,12 +133,23 @@ public class RutaPdf extends javax.swing.JDialog {
  
         //Initialize PDF document
         PdfDocument pdf = new PdfDocument(writer);
-
         // Initialize document
         Document document = new Document(pdf);
- 
+        Paragraph titulo = new Paragraph("Pinar Plaza").setFontSize(18);
+        titulo.setTextAlignment(TextAlignment.CENTER);
+        Paragraph subtitulo1 = new Paragraph();
+        Paragraph subtitulo2 = new Paragraph("Informe del paciente: "+ "                                                                                           "+" Fecha de elaboracion: " +formateador.format(fechaHoy) ).setFontSize(10);
         //Add paragraph to the document
-        document.add(new Paragraph(contenido));
+        document.add(titulo);
+        document.add(subtitulo1);
+        document.add(subtitulo2);
+        document.add(new Paragraph(" "));
+        document.add(new Paragraph(contenido).setFontSize(7));
+        document.add(new Paragraph(" "));
+        document.add(new Paragraph(" "));
+        document.add(new Paragraph("Firma del medico:").setFontSize(10).setTextAlignment(TextAlignment.RIGHT).setMarginRight(40));
+        document.add(new Paragraph(" "));
+        document.add(new Paragraph("--------------------------------------").setFontSize(10).setTextAlignment(TextAlignment.RIGHT).setMarginRight(20));
  
         //Close document
         document.close();

@@ -52,12 +52,14 @@ public class ControladorABMPersonal {
     }
     
     public boolean iniciarAlta(DTOPersonal dtopersonal){
+        FachadaInterna.getInstancia().iniciarTransaccion();
         boolean exito = experto.iniciarAlta(dtopersonal);
         FachadaInterna.getInstancia().finalizarTransaccion();
         return exito;
     }
     
     public void iniciarModificar(DTOPersonal dtopersonal){
+        FachadaInterna.getInstancia().iniciarTransaccion();
         experto.iniciarModificar(dtopersonal);
         FachadaInterna.getInstancia().finalizarTransaccion();
         

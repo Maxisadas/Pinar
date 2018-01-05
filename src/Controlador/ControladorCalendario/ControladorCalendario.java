@@ -33,9 +33,9 @@ public class ControladorCalendario {
         return list;
     }
     
-    public Evento buscarEvento(Date fechaElejida){
+    public List<Evento> buscarEvento(Date fechaElejida){
        FachadaInterna.getInstancia().iniciarTransaccion();
-       Evento evento = experto.buscarEvento(fechaElejida);
+       List<Evento> evento = experto.buscarEvento(fechaElejida);
        FachadaInterna.getInstancia().finalizarTransaccion();
        return evento;
     }

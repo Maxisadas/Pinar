@@ -343,6 +343,7 @@ Vector<String> cuadro2;
         }
             
         }catch(Exception e){
+            System.out.println(e.getCause() + " " + e.getMessage());
             JOptionPane.showMessageDialog(null, "Por favor revise que selecciono todas las opciones", "Error", 0);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
