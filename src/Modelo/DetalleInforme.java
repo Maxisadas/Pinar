@@ -23,20 +23,20 @@ import javax.persistence.Table;
  * @author User
  */
 @Entity
-@Table(name="detalleInforme")
+@Table(name="detalleinforme")
 public class DetalleInforme implements Serializable{
     
     public enum TipoInforme {BASICO,AVANZADO};
     @Id @GeneratedValue
     private Long id;
-    @Column(name="informeMedico")
+    @Column(name="informe_medico")
     private String informeMedico;
     @OneToOne(fetch = FetchType.LAZY)
     private Informe informe;
     @Lob
     @Column(name="foto",nullable=true)
     private byte[] fotoPaciente;
-    @Column
+    @Column(name="tipo_informe")
     public TipoInforme tipoInforme;
     
     public DetalleInforme() {
