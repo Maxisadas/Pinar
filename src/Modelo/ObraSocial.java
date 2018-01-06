@@ -25,21 +25,21 @@ import javax.persistence.TemporalType;
 public class ObraSocial implements Serializable{
     @Id @GeneratedValue
     private Long id;
-    @Column(name="nombreObraSocial")
+    @Column(name="nombre_obra_social")
     private String nombreObraSocial;
-    @Column
+    @Column(name="fecha_emision_credencial")
     private String fechaEmisionCredencial;
-    @Column
+    @Column(name="fecha_vigencia_credencial")
     private String fechaVigenciaCredencial;
-    @Column
+    @Column(name="numero_beneficio")
     private String numeroBeneficio;
     @Column
     private String domicilio;
     @Column
     private String localidad;
-    @Column 
+    @Column(name="modulo_internacion") 
     private String moduloInternacion;
-    @Column
+    @Column(name="fecha_vigencia_modulo")
     private String fechaVigenciaModulo;
 
     

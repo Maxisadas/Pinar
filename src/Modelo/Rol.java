@@ -28,7 +28,7 @@ import javax.persistence.Table;
 public class Rol implements Serializable {
     @Id @GeneratedValue
     private Long id;
-    @Column(name="nombreRol")
+    @Column(name="nombre_rol")
     private String nombreRol;
 
 

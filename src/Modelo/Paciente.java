@@ -12,6 +12,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -38,12 +39,13 @@ public class Paciente implements Serializable {
     @Column
     private int edad;
     @Temporal(TemporalType.DATE)
+    @Column(name="fechade_nacimiento")
     private Date fechadeNacimiento;
-    @Column
+    @Column(name="fecha_alta")
     private Date fechaAlta;
-    @Column
+    @Column(name="fecha_baja")
     private Date fechaBaja;
-    @Column
+    @Column(name="motivo_baja")
     private String motivoBaja;
 
     public String getMotivoBaja() {
@@ -67,6 +69,7 @@ public class Paciente implements Serializable {
     @Column
     private String nombre;
     @ManyToOne
+    @JoinColumn(name="obra_social_id")
     private ObraSocial obraSocial;
     
     public Paciente() {

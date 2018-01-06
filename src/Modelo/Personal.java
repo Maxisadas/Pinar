@@ -33,19 +33,19 @@ public class Personal implements Serializable{
     private String apellido;
     @Column(name="dni")
     private String dni;
-    @Column(name="fechaAlta")
+    @Column(name="fecha_alta")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaAlta;
-    @Column(name="fechaBaja")
+    @Column(name="fecha_baja")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaBaja;
     @Column(name="nombre")
     private String nombre;
     @ManyToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="idRol")
+    @JoinColumn(name="id_rol")
     private Rol rol;
     @ManyToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="idArea")
+    @JoinColumn(name="id_area")
     private Area area;
     @OneToMany(fetch = FetchType.LAZY)
     private List<Especialidad> especialidad;

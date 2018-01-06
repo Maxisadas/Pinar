@@ -11,6 +11,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -24,7 +25,7 @@ import javax.persistence.Temporal;
 public class Informe implements Serializable {
     @Id @GeneratedValue
     private Long id;
-    @Column(name="fechaElaboracion")
+    @Column(name="fecha_elaboracion")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaElaboracion;
     @Column(name="numero")
@@ -34,6 +35,7 @@ public class Informe implements Serializable {
     @ManyToOne
     private Personal personal;
     @ManyToOne
+    @JoinColumn(name="historial_clinico_id")
     private HistorialClinico historialClinico;
     
     public Informe() {

@@ -11,6 +11,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -23,9 +24,10 @@ import javax.persistence.Table;
 public class HistorialClinicoEstado implements Serializable {
     @Id @GeneratedValue
     private Long id;
-    @Column
+    @Column(name="fecha_estado")
     private Date fechaEstado;
     @ManyToOne
+    @JoinColumn(name="estado_historial_clinico_id")
     private EstadoHistorialClinico estadoHistorialClinico;
     
 

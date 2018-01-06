@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -27,6 +28,7 @@ public class HistorialClinico implements Serializable {
     @OneToOne
     private Paciente paciente;
     @OneToOne
+    @JoinColumn(name="historial_estado_id")
     private HistorialClinicoEstado historialEstado;
 
     public HistorialClinicoEstado getHistorial() {
