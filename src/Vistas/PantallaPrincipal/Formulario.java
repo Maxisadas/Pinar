@@ -316,14 +316,18 @@ public class Formulario extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void botonImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonImprimirActionPerformed
-        RutaPdf imprimir=new RutaPdf(null,true,jTextArea1.getText());
-        imprimir.setVisible(true);
+        /*RutaPdf imprimir=new RutaPdf(null,true,jTextArea1.getText());
+        imprimir.setVisible(true);*/
+        ImprimirPDF i = new ImprimirPDF();
+        i.imprimir(jTextArea1.getText());
         
     }//GEN-LAST:event_botonImprimirActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        RutaPdf imprimir=new RutaPdf(null,true,jTextArea2.getText());
-        imprimir.setVisible(true);
+       /* RutaPdf imprimir=new RutaPdf(null,true,jTextArea2.getText());
+        imprimir.setVisible(true);*/
+        ImprimirPDF i = new ImprimirPDF();
+        i.imprimir(jTextArea2.getText());
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jbotonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbotonVolverActionPerformed

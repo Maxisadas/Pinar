@@ -38,6 +38,7 @@ String nombrePersonalEnvia;
     public EnviarAviso(java.awt.Frame parent, boolean modal,Long idPersonal,String nombreArea, String nombrePersonalEnvia) {
         super(parent, modal);
         initComponents();
+        Image icon = new ImageIcon(getClass().getResource("/Vistas/imagenes/pinaricono.jpg")).getImage();
         this.setLocationRelativeTo(null);
         listaAbuelos = new ArrayList<>();
         controlador = new ControladorEnviarNotificacion();

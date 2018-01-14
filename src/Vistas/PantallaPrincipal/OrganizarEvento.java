@@ -6,7 +6,9 @@
 package Vistas.PantallaPrincipal;
 
 import Controlador.ControladorCalendario.ControladorCalendario;
+import java.awt.Image;
 import java.util.Date;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,6 +24,7 @@ ControladorCalendario controlador;
         super(parent, modal);
         controlador = new ControladorCalendario();
         initComponents();
+        Image icon = new ImageIcon(getClass().getResource("/Vistas/imagenes/pinaricono.jpg")).getImage();
         this.setLocationRelativeTo(null);
     }
 

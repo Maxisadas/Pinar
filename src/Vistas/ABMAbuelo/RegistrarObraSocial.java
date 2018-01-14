@@ -37,8 +37,8 @@ public static DTOObraSocial dto;
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
-        dto = new DTOObraSocial();
         DTOAbuelo dtoAbuelo = controlador.buscar(idAbuelo);
+        if(dtoAbuelo.getDTOobraSocial() != null){
         dto = dtoAbuelo.getDTOobraSocial();
         textDomicilio.setText(dto.getDomicilio());
         textFechaEmisionCredencial.setText(dto.getFechaEmisionCredencial());
@@ -48,6 +48,9 @@ public static DTOObraSocial dto;
         textNombreObra.setText(dto.getNombreObraSocial());
         textNumeroBeneficio.setText(dto.getNumeroBeneficio());
         textfechaVigenciaModulo.setText(dto.getFechaVigenciaModulo());
+        }else{
+         dto = new DTOObraSocial();   
+        }
     }
 
     /**

@@ -28,6 +28,7 @@ public class ObraSocialAbuelo extends javax.swing.JDialog {
         public void llenarDatos(Long idAbuelo){
             DTOAbuelo dto = controlador.buscar(idAbuelo);
             if(dto.getDTOobraSocial() != null){
+            nombreObra.setText(dto.getDTOobraSocial().getNombreObraSocial());
             DNI.setText(dto.getDni());
             Domicilio.setText(dto.getDTOobraSocial().getDomicilio());
             FechaVigenciaModulo.setText(dto.getDTOobraSocial().getFechaVigenciaModulo());
@@ -75,6 +76,7 @@ public class ObraSocialAbuelo extends javax.swing.JDialog {
         moduloInternacion = new javax.swing.JLabel();
         Localidad = new javax.swing.JLabel();
         FechaVigenciaModulo = new javax.swing.JLabel();
+        nombreObra = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -127,6 +129,8 @@ public class ObraSocialAbuelo extends javax.swing.JDialog {
 
         FechaVigenciaModulo.setText("N/A");
 
+        nombreObra.setText("N/A");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -136,11 +140,13 @@ public class ObraSocialAbuelo extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(316, 316, 316)
-                        .addComponent(jLabel2))
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nombreObra))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(341, 341, 341)
                         .addComponent(jButton1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(332, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,7 +196,9 @@ public class ObraSocialAbuelo extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(nombreObra))
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -284,6 +292,7 @@ public class ObraSocialAbuelo extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel label4;
     private javax.swing.JLabel moduloInternacion;
+    private javax.swing.JLabel nombreObra;
     private javax.swing.JLabel numeroBeneficio;
     private javax.swing.JLabel textFechaVigenciaDeCredencial;
     private javax.swing.JLabel textFechadeEmisionCredencial;

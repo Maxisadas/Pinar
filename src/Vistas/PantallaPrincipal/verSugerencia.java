@@ -9,7 +9,9 @@ import Controlador.ControladorConsultarSugerencia.ControladorConsultarSugerencia
 import Controlador.DTO.DTOConsulta;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import java.text.SimpleDateFormat;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -26,6 +28,8 @@ ControladorConsultarSugerencia controlador;
         this.controlador = controlador;
         this.dto = dto;
         initComponents();
+        jLabel6.setVisible(false);
+        Image icon = new ImageIcon(getClass().getResource("/Vistas/imagenes/pinaricono.jpg")).getImage();
         this.setLocationRelativeTo(null);
         SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy");
         fecha.setText(formateador.format(dto.getFechaCreacion()));
@@ -38,6 +42,7 @@ ControladorConsultarSugerencia controlador;
             
           Font fuente = new Font("Tahoma",Font.BOLD,14);
           Color color = new Color(255,0,0);
+          jLabel6.setVisible(true);
           jLabel6.setFont(fuente);
           jLabel6.setForeground(color);
           nombrePrioridad.setText(dto.getPrioridad());

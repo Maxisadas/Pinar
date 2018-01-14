@@ -32,6 +32,7 @@ ControladorConsultarSugerencia controlador;
         this.controlador = controlador;
         this.dto = dto;
         initComponents();
+        Image icon = new ImageIcon(getClass().getResource("/Vistas/imagenes/pinaricono.jpg")).getImage();
         this.setLocationRelativeTo(null);
         SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy");
         fecha.setText(formateador.format(dto.getFechaCreacion()));

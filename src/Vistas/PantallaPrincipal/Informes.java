@@ -7,6 +7,8 @@ package Vistas.PantallaPrincipal;
 
 import Modelo.DetalleInforme;
 import Modelo.DetalleInforme.TipoInforme;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -20,6 +22,7 @@ public class Informes extends javax.swing.JDialog {
     public Informes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        Image icon = new ImageIcon(getClass().getResource("/Vistas/imagenes/pinaricono.jpg")).getImage();
         this.setLocationRelativeTo(null);
     }
 

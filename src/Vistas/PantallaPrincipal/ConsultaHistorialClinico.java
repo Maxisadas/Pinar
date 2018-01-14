@@ -40,6 +40,7 @@ public class ConsultaHistorialClinico extends javax.swing.JDialog {
     public ConsultaHistorialClinico(java.awt.Frame parent, boolean modal,TipoInforme tipo,DTOAbuelo dto) {
         super(parent, modal);
         initComponents();
+        Image icon = new ImageIcon(getClass().getResource("/Vistas/imagenes/pinaricono.jpg")).getImage();
         this.setLocationRelativeTo(null);
         idPaciente = dto.getId();
         tipoInforme=tipo;

@@ -196,7 +196,9 @@ public class ExpertoABMAbuelos {
         
         if(obrasocialmodificada){
             
-        ObraSocial obra = paciente.getObraSocial();
+        
+        if(paciente.getObraSocial() != null){
+        ObraSocial obra = paciente.getObraSocial();    
         obra.setDomicilio(abuelo.getDTOobraSocial().getDomicilio());
         obra.setFechaEmisionCredencial(abuelo.getDTOobraSocial().getFechaEmisionCredencial());
         obra.setFechaVigenciaCredencial(abuelo.getDTOobraSocial().getFechaVigenciaCredencial());
@@ -206,7 +208,21 @@ public class ExpertoABMAbuelos {
         obra.setNombreObraSocial(abuelo.getDTOobraSocial().getNombreObraSocial());
         obra.setNumeroBeneficio(abuelo.getDTOobraSocial().getNumeroBeneficio());
         paciente.setObraSocial(obra);
-        FachadaInterna.getInstancia().guardar(obra);
+        FachadaInterna.getInstancia().guardar(obra);    
+        }else{
+         ObraSocial obra = new ObraSocial(); 
+        obra.setDomicilio(abuelo.getDTOobraSocial().getDomicilio());
+        obra.setFechaEmisionCredencial(abuelo.getDTOobraSocial().getFechaEmisionCredencial());
+        obra.setFechaVigenciaCredencial(abuelo.getDTOobraSocial().getFechaVigenciaCredencial());
+        obra.setFechaVigenciaModulo(abuelo.getDTOobraSocial().getFechaVigenciaModulo());
+        obra.setLocalidad(abuelo.getDTOobraSocial().getLocalidad());
+        obra.setModuloInternacion(abuelo.getDTOobraSocial().getModuloInternacion());
+        obra.setNombreObraSocial(abuelo.getDTOobraSocial().getNombreObraSocial());
+        obra.setNumeroBeneficio(abuelo.getDTOobraSocial().getNumeroBeneficio());
+        paciente.setObraSocial(obra);
+        FachadaInterna.getInstancia().guardar(obra);    
+        }
+
             
         }
 

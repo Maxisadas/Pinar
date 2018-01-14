@@ -7,6 +7,7 @@ package Vistas.PantallaPrincipalEnfermeria;
 
 import Controlador.ControladorConsultarSugerencia.ControladorConsultarSugerencia;
 import Controlador.DTO.DTOConsulta;
+import Vistas.PantallaPrincipal.Background;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -74,7 +75,7 @@ DTOConsulta dto;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        SugerenciaNueva = new javax.swing.JPanel();
+        SugerenciaNueva = new Background("/Vistas/imagenes/FondoSugerenciaEnfermeria.jpg");
         jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         nombreMedico = new javax.swing.JLabel();

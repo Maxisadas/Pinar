@@ -9,6 +9,7 @@ import Controlador.ControladorGuardarFormularioEnfermeria.ControladorFormularioE
 import Controlador.DTO.DTOFormulario;
 import Modelo.Usuario;
 import Vistas.PantallaPrincipal.Background;
+import Vistas.PantallaPrincipal.ImprimirPDF;
 import javax.swing.JOptionPane;
 
 /**
@@ -81,6 +82,11 @@ DTOFormulario dto;
         });
 
         botonImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/imagenes/imprimir.jpg"))); // NOI18N
+        botonImprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonImprimirActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -185,6 +191,11 @@ DTOFormulario dto;
         }
         
     }//GEN-LAST:event_botonGuardarActionPerformed
+
+    private void botonImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonImprimirActionPerformed
+        ImprimirPDF i = new ImprimirPDF();
+        i.imprimir(jTextArea1.getText());
+    }//GEN-LAST:event_botonImprimirActionPerformed
 
     /**
      * @param args the command line arguments

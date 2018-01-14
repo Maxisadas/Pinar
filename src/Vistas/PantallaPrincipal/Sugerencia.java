@@ -31,7 +31,7 @@ ControladorConsultarSugerencia controlador;
         nombreArea.setText(dto.getNombreArea());
         nombreMedico.setText(dto.getNombreProfesional());
         if(Integer.parseInt(dto.getPrioridad()) == 1){
-          Font fuente = new Font("Tahoma",Font.BOLD,14);
+          Font fuente = new Font("Tahoma",Font.BOLD,12);
           Color color = new Color(255,0,0);
           jLabel1.setVisible(true);
           jLabel1.setFont(fuente);
@@ -43,7 +43,7 @@ ControladorConsultarSugerencia controlador;
           nombrePrioridad.setForeground(color);
         }else{
           if(Integer.parseInt(dto.getPrioridad()) == 2 || Integer.parseInt(dto.getPrioridad()) == 3 ){
-          Font fuente = new Font("Tahoma",Font.BOLD,14);
+          Font fuente = new Font("Tahoma",Font.BOLD,12);
           
           Color color = new Color(255,102,51);
           jLabel9.setFont(fuente);
@@ -54,7 +54,7 @@ ControladorConsultarSugerencia controlador;
               
               
           }else{
-          Font fuente = new Font("Tahoma",Font.PLAIN,12);
+          Font fuente = new Font("Tahoma",Font.PLAIN,10);
           Color color = new Color(0,255,0);
           jLabel9.setFont(fuente);
           jLabel9.setForeground(color);
@@ -77,7 +77,7 @@ ControladorConsultarSugerencia controlador;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        SugerenciaNueva = new javax.swing.JPanel();
+        SugerenciaNueva = new Background("/Vistas/imagenes/FondoSugerencia.jpg");
         jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         nombreMedico = new javax.swing.JLabel();
@@ -91,13 +91,17 @@ ControladorConsultarSugerencia controlador;
         jLabel1 = new javax.swing.JLabel();
 
         SugerenciaNueva.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        SugerenciaNueva.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Nueva sugerencia");
+        SugerenciaNueva.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 2, 266, -1));
 
         jLabel7.setText("De:");
+        SugerenciaNueva.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 22, -1, -1));
 
         nombreMedico.setText("jLabel8");
+        SugerenciaNueva.add(nombreMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 22, 146, -1));
 
         jButton4.setText("Consultar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -105,86 +109,29 @@ ControladorConsultarSugerencia controlador;
                 jButton4ActionPerformed(evt);
             }
         });
+        SugerenciaNueva.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, -1, 20));
 
         jLabel9.setText("Prioridad:");
+        SugerenciaNueva.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
 
         nombrePrioridad.setText("jLabel10");
+        SugerenciaNueva.add(nombrePrioridad, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, -1, -1));
 
         jLabel11.setText("Area:");
+        SugerenciaNueva.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 62, -1, -1));
 
         nombreArea.setText("jLabel12");
+        SugerenciaNueva.add(nombreArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 62, -1, -1));
 
         jLabel13.setText("Fecha enviada:");
+        SugerenciaNueva.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 22, -1, -1));
 
         fecha.setText("jLabel14");
+        SugerenciaNueva.add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 37, -1, -1));
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("¡URGENTE!");
-
-        javax.swing.GroupLayout SugerenciaNuevaLayout = new javax.swing.GroupLayout(SugerenciaNueva);
-        SugerenciaNueva.setLayout(SugerenciaNuevaLayout);
-        SugerenciaNuevaLayout.setHorizontalGroup(
-            SugerenciaNuevaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(SugerenciaNuevaLayout.createSequentialGroup()
-                .addGroup(SugerenciaNuevaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(SugerenciaNuevaLayout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel7))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SugerenciaNuevaLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(SugerenciaNuevaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel11)
-                            .addGroup(SugerenciaNuevaLayout.createSequentialGroup()
-                                .addComponent(fecha)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                                .addComponent(jLabel9)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(SugerenciaNuevaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nombreMedico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SugerenciaNuevaLayout.createSequentialGroup()
-                        .addGroup(SugerenciaNuevaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nombreArea)
-                            .addComponent(nombrePrioridad))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(SugerenciaNuevaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(SugerenciaNuevaLayout.createSequentialGroup()
-                                .addGap(0, 21, Short.MAX_VALUE)
-                                .addComponent(jButton4))
-                            .addGroup(SugerenciaNuevaLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(0, 0, Short.MAX_VALUE))))))
-        );
-        SugerenciaNuevaLayout.setVerticalGroup(
-            SugerenciaNuevaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SugerenciaNuevaLayout.createSequentialGroup()
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(SugerenciaNuevaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(nombreMedico)
-                    .addComponent(jLabel13))
-                .addGroup(SugerenciaNuevaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(SugerenciaNuevaLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(SugerenciaNuevaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(nombrePrioridad)
-                            .addComponent(jLabel1)))
-                    .addGroup(SugerenciaNuevaLayout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(fecha)))
-                .addGroup(SugerenciaNuevaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(SugerenciaNuevaLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton4))
-                    .addGroup(SugerenciaNuevaLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(SugerenciaNuevaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11)
-                            .addComponent(nombreArea))
-                        .addContainerGap(22, Short.MAX_VALUE))))
-        );
+        SugerenciaNueva.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -194,7 +141,7 @@ ControladorConsultarSugerencia controlador;
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(SugerenciaNueva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(SugerenciaNueva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
