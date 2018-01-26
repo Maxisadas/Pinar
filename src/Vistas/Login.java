@@ -121,6 +121,9 @@ ControladorIniciarSesion controlador;
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonIngresarSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresarSistemaActionPerformed
+        
+      
+      
         if(controlador.validarUsuario(textNombreUsuario.getText(), textContraseña.getText())){
             Usuario usuario = controlador.loguear(textNombreUsuario.getText());
             if("Enfermeria".equals(usuario.getPersonal().getArea().getNombreArea())){
@@ -129,12 +132,14 @@ ControladorIniciarSesion controlador;
             i.setVisible(true);
             this.setVisible(false);
             this.dispose();
+            
                 
             }else{
             InterfazPantallaPrincipal i = new InterfazPantallaPrincipal(usuario);
             i.setVisible(true);
             this.setVisible(false);
-            this.dispose();    
+            this.dispose();
+            
                 
             }
             
@@ -145,6 +150,7 @@ ControladorIniciarSesion controlador;
             JOptionPane.showMessageDialog(null, "El nombre de usuario o contraseña son incorrecto, ingrese nuevamente", "Error", 0);
             textNombreUsuario.setText("");
             textContraseña.setText("");
+            
         }
         
     }//GEN-LAST:event_botonIngresarSistemaActionPerformed

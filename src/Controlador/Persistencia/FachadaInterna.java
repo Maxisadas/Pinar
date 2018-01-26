@@ -153,6 +153,7 @@ public class FachadaInterna
         
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "No se pudo establecer la conexion con la base de datos, por favor revise su conexion de RED", "Error", 0);
+            System.out.println(e.getCause() + " " +e.getMessage() + " " + e.getLocalizedMessage());
         }
     }
     
