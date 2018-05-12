@@ -11,8 +11,12 @@ import Controlador.ControladorAbuelo.ControladorAbuelo;
 import Controlador.ControladorGuardarFormulario.ControladorGestionFormulario;
 import Controlador.DTO.DTOArea;
 import java.awt.Image;
+import java.awt.print.PrinterException;
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -319,7 +323,13 @@ public class Formulario extends javax.swing.JDialog {
         /*RutaPdf imprimir=new RutaPdf(null,true,jTextArea1.getText());
         imprimir.setVisible(true);*/
         ImprimirPDF i = new ImprimirPDF();
-        i.imprimir(jTextArea1.getText());
+        try {
+            i.imprimir(jTextArea1.getText());
+        } catch (IOException ex) {
+            Logger.getLogger(Formulario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (PrinterException ex) {
+            Logger.getLogger(Formulario.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_botonImprimirActionPerformed
 
@@ -327,7 +337,13 @@ public class Formulario extends javax.swing.JDialog {
        /* RutaPdf imprimir=new RutaPdf(null,true,jTextArea2.getText());
         imprimir.setVisible(true);*/
         ImprimirPDF i = new ImprimirPDF();
-        i.imprimir(jTextArea2.getText());
+        try {
+            i.imprimir(jTextArea2.getText());
+        } catch (IOException ex) {
+            Logger.getLogger(Formulario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (PrinterException ex) {
+            Logger.getLogger(Formulario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jbotonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbotonVolverActionPerformed
