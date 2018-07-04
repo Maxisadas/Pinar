@@ -10,6 +10,10 @@ import Controlador.DTO.DTOFormulario;
 import Modelo.Usuario;
 import Vistas.PantallaPrincipal.Background;
 import Vistas.PantallaPrincipal.ImprimirPDF;
+import java.awt.print.PrinterException;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -194,7 +198,13 @@ DTOFormulario dto;
 
     private void botonImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonImprimirActionPerformed
         ImprimirPDF i = new ImprimirPDF();
+    try {
         i.imprimir(jTextArea1.getText());
+    } catch (IOException ex) {
+        Logger.getLogger(FormularioEnfermeria.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (PrinterException ex) {
+        Logger.getLogger(FormularioEnfermeria.class.getName()).log(Level.SEVERE, null, ex);
+    }
     }//GEN-LAST:event_botonImprimirActionPerformed
 
     /**
