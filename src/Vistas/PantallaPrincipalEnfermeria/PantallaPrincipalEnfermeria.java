@@ -121,34 +121,66 @@ Timer timer;
         timer.stop();
     }
          
-         public void refrescarCalendario(){
+        public void refrescarCalendario(){
         Calendar cal = Calendar.getInstance();
+        Calendar calendarioNormal = Calendar.getInstance();
+        
+        
         JPanel jpanel = jCalendar1.getDayChooser().getDayPanel();
         Component component[] = jpanel.getComponents();
         
         List<Evento> listaEventos = controladorEventos.consultarEvento();
         Date fechaMarcada = jCalendar1.getDate();
-        for(Evento evento : listaEventos){
-         cal.setTime(evento.getFechaAsignada());   
+        for(Evento evento : listaEventos){   
+         cal.setTime(evento.getFechaAsignada());
+         calendarioNormal.setTime(fechaMarcada);//Establecemos en un calendario Paralelo con respecto a la fecha que seleccionamos
+         calendarioNormal.set(Calendar.DAY_OF_MONTH, 1);//Seteamos el primer dia de ese ems
         int mes = evento.getFechaAsignada().getMonth();
         int año =  evento.getFechaAsignada().getYear()+1900;
+      
+        
+        
+        
+        int offset = 0;
+        switch(calendarioNormal.get(Calendar.DAY_OF_WEEK)){ //Se verifica el primer dia del mes, y establecer el offset del calendario respecto del primer dia del mes
+                       case 1: offset=6;
+                       break;
+                       case 2: offset=0;
+                       break;
+                       case 3: offset=1;
+                       break;
+                       case 4: offset=2;
+                       break;
+                       case 5: offset=3;
+                       break;
+                       case 6: offset=4;
+                       break;
+                       case 7: offset=5;
+                       break;
+                       
+                   }
+        
+        
             if(fechaMarcada.getMonth() == mes && fechaMarcada.getYear()+1900 == año){
-        //cal.set(Calendar.DAY_OF_MONTH,1);
-        int offset = cal.get(Calendar.DAY_OF_MONTH)+6;
-     
-        
-        int dia = offset;
-        
-        
-        component[dia].setBackground(Color.red);
+               
+                  
+                   int dia = cal.get(Calendar.DAY_OF_MONTH)+6+offset;
+                   component[dia].setBackground(Color.red);    
+                    
+               
+                        
+                      
+                  }
+                         
+                    
+                
             }
         
-
+            
+    
         
         
         }
-        
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -225,7 +257,6 @@ Timer timer;
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("Realizar reporte de enfermeria");
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("Consultar historial clinico del paciente");
 
