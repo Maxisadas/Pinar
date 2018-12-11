@@ -11,6 +11,8 @@ import Modelo.Usuario;
 import Vistas.PantallaPrincipal.InterfazPantallaPrincipal;
 import Vistas.PantallaPrincipalEnfermeria.PantallaPrincipalEnfermeria;
 import Vistas.RegistrarUsuario.InterfazRegistrarUsuario;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -26,6 +28,38 @@ ControladorIniciarSesion controlador;
         initComponents();
         this.setLocationRelativeTo(null);
         controlador = new ControladorIniciarSesion();
+    }
+    
+    public void IngresarSistema(){
+        
+            if(controlador.validarUsuario(textNombreUsuario.getText(), textContraseña.getText())){
+            Usuario usuario = controlador.loguear(textNombreUsuario.getText());
+            if("Enfermeria".equals(usuario.getPersonal().getArea().getNombreArea())){
+                
+            PantallaPrincipalEnfermeria i = new PantallaPrincipalEnfermeria(usuario);
+            i.setVisible(true);
+            this.setVisible(false);
+            this.dispose();
+            
+                
+            }else{
+            InterfazPantallaPrincipal i = new InterfazPantallaPrincipal(usuario);
+            i.setVisible(true);
+            this.setVisible(false);
+            this.dispose();
+            
+                
+            }
+            
+
+            
+        }else{
+            
+            JOptionPane.showMessageDialog(null, "El nombre de usuario o contraseña son incorrecto, ingrese nuevamente", "Error", 0);
+            textNombreUsuario.setText("");
+            textContraseña.setText("");
+            
+        }    
     }
 
     /**
@@ -56,30 +90,30 @@ ControladorIniciarSesion controlador;
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel2.setText("   Bienvenido al Sistema Interno Medico");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 470, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 470, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 51));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("PP");
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/imagenes/logo web-01.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 144, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 100, 100));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 290, 150));
 
         jLabel4.setText("Por favor inicie sesion");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, -1, -1));
 
         jLabel5.setText("Nombre Usuario: ");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, -1, 20));
@@ -111,7 +145,18 @@ ControladorIniciarSesion controlador;
                 botonSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(botonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
+        getContentPane().add(botonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, -1, -1));
+
+        textContraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textContraseñaActionPerformed(evt);
+            }
+        });
+        textContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textContraseñaKeyPressed(evt);
+            }
+        });
         getContentPane().add(textContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 150, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vistas/imagenes/background-1591227_960_720.jpg"))); // NOI18N
@@ -122,36 +167,9 @@ ControladorIniciarSesion controlador;
 
     private void botonIngresarSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresarSistemaActionPerformed
         
+      IngresarSistema();
       
-      
-        if(controlador.validarUsuario(textNombreUsuario.getText(), textContraseña.getText())){
-            Usuario usuario = controlador.loguear(textNombreUsuario.getText());
-            if("Enfermeria".equals(usuario.getPersonal().getArea().getNombreArea())){
-                
-            PantallaPrincipalEnfermeria i = new PantallaPrincipalEnfermeria(usuario);
-            i.setVisible(true);
-            this.setVisible(false);
-            this.dispose();
-            
-                
-            }else{
-            InterfazPantallaPrincipal i = new InterfazPantallaPrincipal(usuario);
-            i.setVisible(true);
-            this.setVisible(false);
-            this.dispose();
-            
-                
-            }
-            
 
-            
-        }else{
-            
-            JOptionPane.showMessageDialog(null, "El nombre de usuario o contraseña son incorrecto, ingrese nuevamente", "Error", 0);
-            textNombreUsuario.setText("");
-            textContraseña.setText("");
-            
-        }
         
     }//GEN-LAST:event_botonIngresarSistemaActionPerformed
 
@@ -165,6 +183,19 @@ ControladorIniciarSesion controlador;
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
         System.exit(0);
     }//GEN-LAST:event_botonSalirActionPerformed
+
+    private void textContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textContraseñaActionPerformed
+        
+    }//GEN-LAST:event_textContraseñaActionPerformed
+
+    private void textContraseñaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textContraseñaKeyPressed
+                if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+              
+                IngresarSistema();
+                 
+                }
+             
+    }//GEN-LAST:event_textContraseñaKeyPressed
 
     /**
      * @param args the command line arguments

@@ -21,13 +21,17 @@ public class ExpertoHistorialClinico {
                 + "h.paciente.id=:idPaciente ").setParameter("idPaciente", idPaciente).uniqueResult();
         String hql= "SELECT i.id FROM Informe i WHERE i.paciente.id=:id AND i.historialClinico.id=:idHistorial";
         List<Long> listaIds= (List<Long>)HibernateUtil.getSession().createQuery(hql).setParameter("id", idPaciente).setParameter("idHistorial", historialClinico.getId()).list();
-        
-        List<DetalleInforme> listaDetalle=(List<DetalleInforme>)HibernateUtil.getSession().createQuery("SELECT de FROM DetalleInforme de"
-                + " WHERE de.tipoInforme=:tipo AND de.informe.id IN :ids").setParameter("tipo",tipoInforme).setParameterList("ids",listaIds).list();
-        List<DTODetalleInforme> listaDto= new ArrayList<>();
-        for(DetalleInforme detalle:listaDetalle){
-            listaDto.add(DetalleInforme.buildDTODetalleInforme(detalle));        
-        }
-        return listaDto;
+            if(listaIds.size()>0){
+                List<DetalleInforme> listaDetalle=(List<DetalleInforme>)HibernateUtil.getSession().createQuery("SELECT de FROM DetalleInforme de WHERE de.tipoInforme=:tipo AND de.informe.id IN :ids").setParameter("tipo",tipoInforme).setParameterList("ids",listaIds).list();
+                List<DTODetalleInforme> listaDto= new ArrayList<>();
+                for(DetalleInforme detalle:listaDetalle){
+                listaDto.add(DetalleInforme.buildDTODetalleInforme(detalle));        
+                }
+            
+                return listaDto;
+            }else{
+                List<DTODetalleInforme> listaDto= new ArrayList<>();
+                return listaDto;
+            }
     }
 }

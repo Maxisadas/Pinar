@@ -6,7 +6,9 @@
 package Vistas.PantallaPrincipal;
 
 import Controlador.DTO.DTODetalleInforme;
+import java.awt.Image;
 import java.text.SimpleDateFormat;
+import javax.swing.ImageIcon;
 
 /**
  *

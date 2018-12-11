@@ -27,7 +27,13 @@ public class ExpertoRegistrarUsuario {
         Personal personal =(Personal) HibernateUtil.getSession().createQuery("SELECT p FROM Personal p WHERE dni=" + dniPersonal).uniqueResult();
         
         if(personal != null){
-        return true;    
+            Usuario usuario = (Usuario) HibernateUtil.getSession().createQuery("SELECT u FROM Usuario u WHERE u.personal=:personal").setParameter("personal", personal).uniqueResult();
+            if(usuario == null){
+            return true;      
+            }else{
+                return false;
+            }
+             
             
             
         }else{

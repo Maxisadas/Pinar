@@ -50,7 +50,9 @@ Timer timer;
      */
     public PantallaPrincipalEnfermeria(Usuario usuario) {
         initComponents();
+        this.setResizable(false);
         Image icon = new ImageIcon(getClass().getResource("/Vistas/imagenes/pinaricono.jpg")).getImage();
+        setIconImage(icon);
         this.usuario = usuario;
         controladorEventos = new ControladorCalendario();
         personal = usuario.getPersonal();

@@ -15,7 +15,7 @@ import Controlador.Persistencia.HibernateUtil;
 public class ExpertoBuscarAbuelo {
     public DTOAbuelo buscarPorDNI(String documento){
         if(documento!=null){
-            Paciente paciente=(Paciente)HibernateUtil.getSession().createQuery("SELECT p FROM Paciente p WHERE p.dni=:dni").setParameter("dni", documento).uniqueResult();
+            Paciente paciente=(Paciente)HibernateUtil.getSession().createQuery("SELECT p FROM Paciente p WHERE p.dni=:dni AND p.fechaBaja=" + null).setParameter("dni", documento).uniqueResult();
             if(paciente!=null){
                 return Paciente.buildDTO(paciente);
             }

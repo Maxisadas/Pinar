@@ -61,6 +61,7 @@ Timer timer;
      */
     public InterfazPantallaPrincipal(Usuario usuario){
         initComponents();
+        this.setResizable(false);
         Image icon = new ImageIcon(getClass().getResource("/Vistas/imagenes/pinaricono.jpg")).getImage();
         setIconImage(icon);
         personal = usuario.getPersonal();
@@ -443,6 +444,9 @@ Timer timer;
                         .addComponent(jLabel9)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
+
+        Color color = new Color(65,51,6);
+        jMenuBar1.setBackground(color);
 
         jMenu1.setText("Menu");
 
